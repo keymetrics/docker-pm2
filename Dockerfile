@@ -1,10 +1,10 @@
 FROM alpine:latest
 MAINTAINER Keymetrics <contact@keymetrics.io>
 
-ENV NODE_VERSION=v6.2.2
+ENV NODE_VERSION=v6.3.0
 
 RUN apk upgrade --update \
- && apk add curl make gcc g++ linux-headers paxctl musl-dev \
+ && apk add curl make gcc g++ linux-headers paxctl musl-dev git \
     libgcc libstdc++ binutils-gold python openssl-dev zlib-dev \
  && mkdir -p /root/src \
  && cd /root/src \
