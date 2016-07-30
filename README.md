@@ -10,6 +10,8 @@ To maximize your Node.js workflow and performance, make sure you declare your ap
 $ docker pull keymetrics/pm2-docker-alpine:latest
 ```
 
+[Hub image](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
+
 ### Create new nodejs pm2 container
 
 ```
@@ -27,6 +29,8 @@ $ docker run -d                  \
 * $SECRET_KEY Keymetrics bucket secret key
 * $PUBLIC_KEY Keymetrics bucket public key
 * $INSTANCE_NAME Name for this instance on Keymetrics
+
+You can also pass the JSON_LOGS env variable to ouput JSON instead of classic logs.
 
 ## Actions
 
