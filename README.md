@@ -1,10 +1,8 @@
 # pm2-docker-alpine
 
-Official lightweight Docker image for PM2 + Keymetrics integration.
+Official lightweight Docker image for PM2 with Keymetrics integration.
 
-Uses the dedicated pm2-docker command for nice integration with Docker.
-
-To maximize your Docker/PM2 workflow and performance, make sure you declare your application behavior into a [YML or JSON configuration file](http://pm2.keymetrics.io/docs/usage/application-declaration/) and enable the [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/)
+To maximize your Node.js workflow and performance, make sure you declare your application behavior into a [YML or JSON configuration file](http://pm2.keymetrics.io/docs/usage/application-declaration/) and enable the [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/)
 
 ### Install
 

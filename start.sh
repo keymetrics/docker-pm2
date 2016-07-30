@@ -6,12 +6,13 @@ fi
 
 cd /app
 
-#
 # Logs options:
-# --raw for raw log output
-# --timestamp to prefix log with timestamp
-# --color to display color
-#
+# --json-logs  for json log output
+# --raw-logs   for raw log output
+# --color-logs to display color
+# --color-logs to display color
+# --timestamp  to prefix log with timestamp
+
 # Options:
 # --auto-exit : exit PM2 if no app is running or all apps are stopped
 #

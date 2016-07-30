@@ -22,7 +22,7 @@ RUN apk upgrade --update \
  && apk search --update
 
 # Install V2 with pm2-docker command
-RUN npm install Unitech/pm2#development -g
+RUN npm install pm2@next -g
 
 # Install pm2-server-monit module
 # https://github.com/dashersw/docker-node-pm2-keymetrics/blob/master/Dockerfile#L14
