@@ -8,6 +8,12 @@ This Docker image includes a better signal handling with graceful stop, direct l
 
 All version are tagged on the [pm2-docker-alpine](https://github.com/keymetrics/pm2-docker-alpine) repository.
 
+### Usage
+
+```bash
+$ docker pull keymetrics/pm2-docker-alpine:latest
+```
+
 Versions available:
 
 - keymetrics/pm2-alpine-docker:latest with Node.js 6
@@ -16,13 +22,7 @@ Versions available:
 
 These images are automatically built from the Docker hub based on this Github repository.
 
-### Usage
-
-```bash
-$ docker pull keymetrics/pm2-docker-alpine:latest
-```
-
-[Hub image](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
+[Hub link](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
 ### Running the container
 
