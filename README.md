@@ -2,13 +2,21 @@
 
 ![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
 
-Node.js lightweight Docker image including the PM2 runtime.
+Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
 This Docker image includes a better signal handling with graceful stop, direct log output in various format (prefixed logs, json logs) and easy [Keymetrics](https://keymetrics.io/) integration.
 
-To maximize your Node.js workflow and performance, make sure you declare your application behavior into a [configuration file](http://pm2.keymetrics.io/docs/usage/application-declaration/) and enable the [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/).
+All version are tagged on the [pm2-docker-alpine](https://github.com/keymetrics/pm2-docker-alpine) repository.
 
-### Install
+Versions available:
+
+- keymetrics/pm2-alpine-docker:latest with Node.js 6
+- keymetrics/pm2-alpine-docker:4 with Node.js 4
+- keymetrics/pm2-alpine-docker:0.12 with Node.js 0.12
+
+These images are automatically built from the Docker hub based on this Github repository.
+
+### Usage
 
 ```bash
 $ docker pull keymetrics/pm2-docker-alpine:latest
@@ -16,7 +24,7 @@ $ docker pull keymetrics/pm2-docker-alpine:latest
 
 [Hub image](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
-### Create new nodejs pm2 container
+### Running the container
 
 ```
 $ docker run -d                  \
@@ -38,22 +46,22 @@ You can also pass the JSON_LOGS env variable to ouput JSON instead of classic lo
 
 ## Actions
 
-### Git pull application and reload
+### Listing managed processes
 
 ```bash
-$ docker exec -it nodepm2 pm2 pull app_name
+$ docker exec -it <container_id> pm2 list
+```
+
+### Get more information about a process
+
+```bash
+$ docker exec -it <container_id> pm2 show <app_name>
 ```
 
 ### 0sec downtime reload all applications
 
 ```bash
-$ docker exec -it nodepm2 pm2 reload all
-```
-
-### Display logs
-
-```bash
-$ docker exec -it nodepm2 pm2 logs
+$ docker exec -it <container_id> pm2 reload all
 ```
 
 ### Automatically synchronize your application with git
@@ -64,10 +72,14 @@ Add into your Dockerfile:
 RUN pm2 install pm2-auto-pull
 ```
 
-Or install (not sur that works?)
+Or try it:
 
 ```bash
-$ docker exec -it nodepm2 pm2 install pm2-auto-pull
+$ docker exec -it <container_id> pm2 install pm2-auto-pull
 ```
 
-Make sure the .git is present in your application source folder.
+*Make sure the .git is present in your application source folder.*
+
+## License
+
+MIT
