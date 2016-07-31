@@ -4,7 +4,9 @@
   <img src="https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master" alt="Build Status"/>
 </a>
 
-Node.js lightweight Docker image with dumb-init, PM2 and Keymetrics integration.
+Node.js lightweight Docker image including the PM2 runtime.
+
+This Docker image includes a better signal handling with graceful stop, direct log output in various format (prefixed logs, json logs) and simple [Keymetrics](https://keymetrics.io/) integration.
 
 To maximize your Node.js workflow and performance, make sure you declare your application behavior into a [configuration file](http://pm2.keymetrics.io/docs/usage/application-declaration/) and enable the [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/).
 
