@@ -1,8 +1,6 @@
 # pm2-docker-alpine
 
-<a href="https://travis-ci.org/keymetrics/pm2-docker-alpine">
-  <img src="https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master" alt="Build Status"/>
-</a>
+![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
 
 Node.js lightweight Docker image including the PM2 runtime.
 
