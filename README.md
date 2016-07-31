@@ -1,5 +1,9 @@
 # pm2-docker-alpine
 
+<a href="https://travis-ci.org/keymetrics/pm2-docker-alpine">
+  <img src="https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master" alt="Build Status"/>
+</a>
+
 Node.js lightweight Docker image with dumb-init, PM2 and Keymetrics integration.
 
 To maximize your Node.js workflow and performance, make sure you declare your application behavior into a [configuration file](http://pm2.keymetrics.io/docs/usage/application-declaration/) and enable the [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/).
