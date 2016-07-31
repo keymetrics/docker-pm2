@@ -3,6 +3,7 @@ MAINTAINER Keymetrics <contact@keymetrics.io>
 
 RUN apk update
 RUN apk add ca-certificates wget && update-ca-certificates
+RUN apk add git
 
 RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.2/dumb-init_1.1.2_amd64
 RUN chmod +x /usr/local/bin/dumb-init
