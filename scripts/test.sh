@@ -25,11 +25,11 @@ function ispec {
 
 docker pull keymetrics/pm2-docker-alpine
 
-docker run -d -p 5678:3000 -v `pwd`/example_app:/app -e "APP=ecosystem.yml" keymetrics/pm2-docker-alpine
+docker run -d -p 80:3000 -v `pwd`/example_app:/app -e "APP=process.yml" keymetrics/pm2-docker-alpine
 
 sleep 2
 
-curl http://localhost:5678/
+curl http://localhost:80/
 spec "Should have got data from running app in docker container"
 
 # Stopping container
