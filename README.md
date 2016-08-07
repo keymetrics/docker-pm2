@@ -2,9 +2,9 @@
 
 ![https://travis-ci.org/pm2hive/docker-volume](https://travis-ci.org/pm2-hive/docker-volume.svg?branch=master)
 
-Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/) for production Node.js applications.
+Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/) for production applications.
 
-This Docker image in association with PM2, allow to enhance Node.js application uptime, [performance](http://pm2.keymetrics.io/docs/usage/cluster-mode/), [logs systems](http://pm2.keymetrics.io/docs/usage/log-management/) and includes a clean graceful shutdown mechanism to auto-scale containers properly.
+This Docker image in association with PM2, increase application uptime, increase performance (spawn multiple processes and [load-balance network query](http://pm2.keymetrics.io/docs/usage/cluster-mode/) without any code change) and allow graceful state change, adapted to production environment.
 
 ### Usage
 
