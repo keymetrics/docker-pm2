@@ -11,4 +11,4 @@ EXPOSE 443
 EXPOSE 43554
 
 # Start process.yml
-CMD ["pm2-docker", "start", "--auto-exit", "--env", "production", "process.yml"]
+CMD ["pm2-docker", "start", "--auto-exit", "--env", "test", "process.yml"]
