@@ -4,7 +4,7 @@
 
 Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
-This Docker image includes a better signal handling with graceful stop, direct log output in various format (prefixed logs, json logs) and easy [Keymetrics](https://keymetrics.io/) integration.
+This Docker image allow to gracefully stop applications, output log of multiple applications in various format (prefixed logs, json logs) and allow a simple integration to [Keymetrics](https://keymetrics.io/).
 
 All version are tagged on the [pm2-docker-alpine](https://github.com/keymetrics/pm2-docker-alpine) repository.
 
