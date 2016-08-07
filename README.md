@@ -9,14 +9,14 @@ This Docker image in association with PM2, allow to enhance Node.js application 
 ### Usage
 
 ```bash
-$ docker pull keymetrics/pm2-docker-alpine
+$ docker pull pm2hive/docker-volume
 ```
 
 Versions available:
 
-- keymetrics/pm2-alpine-docker:latest with Node.js 6
-- keymetrics/pm2-alpine-docker:4 with Node.js 4
-- keymetrics/pm2-alpine-docker:0.12 with Node.js 0.12
+- pm2hive/docker-volume:latest with Node.js 6
+- pm2hive/docker-volume:4 with Node.js 4
+- pm2hive/docker-volume:0.12 with Node.js 0.12
 
 These images are automatically built from the Docker hub based on this Github repository branch arrangement.
 
@@ -28,9 +28,9 @@ Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/appl
 
 ```bash
 # Get example app
-$ git clone https://github.com/keymetrics/pm2-docker-alpine
+$ git clone https://github.com/pm2hive/docker-volume
 # Run example app, mounted as a volume
-$ docker run -p 80:3000 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
+$ docker run -p 80:3000 -v `pwd`/example_app:/app pm2hive/docker-volume
 ```
 
 For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
