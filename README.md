@@ -26,25 +26,40 @@ These images are automatically built from the Docker hub based on this Github re
 
 ### Running the container
 
+Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/application-declaration/) called process.yml, this file will be started by PM2.
+
 ```
-$ docker run -d                  \
-         -p 3000:80              \
-         -v /path/to/source:/app \
-         -e "APP=ecosystem.yml"  \
-         -e "SECRET_KEY=keymetrics_secret" \
-         -e "PUBLIC_KEY=keymetrics_public" \
-         -e "INSTANCE_NAME=instance_name"  \
-         keymetrics/pm2-docker-alpine
+# Get example app
+$ git clone https://github.com/keymetrics/pm2-docker-alpine
+# Retrieve built image
+$ docker pull keymetrics/pm2-docker-alpine
+# Run example app, mounted as a volume
+$ docker run -p 3000:80 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
 ```
 
-* $APP specify your node app start file or [app declaration](http://pm2.keymetrics.io/docs/usage/application-declaration/)
-* $SECRET_KEY Keymetrics bucket secret key
-* $PUBLIC_KEY Keymetrics bucket public key
-* $INSTANCE_NAME Name for this instance on Keymetrics
+For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
 
-You can also pass the JSON_LOGS env variable to ouput JSON instead of classic logs.
+```
+-e "KEYMETRICS_SECRET=YYY
+-e "KEYMETRICS_PUBLIC=XXX"
+-e "INSTANCE_NAME=hostname"
+```
+
+### Log output
+
+Append to pm2-docker CMD directive:
+
+- **--json** to output logs in JSON
+- **--format** to output logs in key=val style
+- **--raw** to display logs in raw format
 
 ## Actions
+
+### Monitoring CPU/Usage of each process
+
+```bash
+$ docker exec -it <container_id> pm2 monit
+```
 
 ### Listing managed processes
 
