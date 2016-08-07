@@ -10,5 +10,7 @@ EXPOSE 80
 EXPOSE 443
 EXPOSE 43554
 
+WORKDIR /app
+
 # Start process.yml
 CMD ["pm2-docker", "start", "--auto-exit", "--env", "production", "process.yml"]
