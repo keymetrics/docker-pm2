@@ -30,7 +30,7 @@ Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/appl
 # Get example app
 $ git clone https://github.com/keymetrics/pm2-docker-alpine
 # Run example app, mounted as a volume
-$ docker run -p 3000:80 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
+$ docker run -p 80:3000 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
 ```
 
 For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
