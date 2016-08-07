@@ -28,7 +28,7 @@ These images are automatically built from the Docker hub based on this Github re
 
 Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/application-declaration/) called process.yml, this file will be started by PM2.
 
-```
+```bash
 # Get example app
 $ git clone https://github.com/keymetrics/pm2-docker-alpine
 # Retrieve built image
