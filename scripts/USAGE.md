@@ -1,4 +1,8 @@
 
+## Update all branch with master
+
+$ bash scripts/update.sh
+
 ## Build
 
 $ docker build -t keymetrics/pm2-docker-alpine .
