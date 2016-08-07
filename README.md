@@ -1,6 +1,6 @@
-# pm2-docker-alpine
+# pm2hive/docker-volume
 
-![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
+![https://travis-ci.org/pm2hive/docker-volume](https://travis-ci.org/pm2-hive/docker-volume.svg?branch=master)
 
 Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/) for production Node.js applications.
 
@@ -20,7 +20,7 @@ Versions available:
 
 These images are automatically built from the Docker hub based on this Github repository branch arrangement.
 
-[Hub link](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
+[Hub link](https://hub.docker.com/r/pm2hive/docker-volume/)
 
 ### Running the container
 
