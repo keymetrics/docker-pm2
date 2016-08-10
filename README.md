@@ -1,6 +1,6 @@
-# pm2hive/docker-volume
+# keymetrics/pm2-docker-alpine
 
-![https://travis-ci.org/pm2hive/docker-volume](https://travis-ci.org/pm2-hive/docker-volume.svg?branch=master)
+![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
 
 Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/) for production applications.
 
@@ -9,18 +9,18 @@ This Docker image in association with PM2, increase application uptime, increase
 ### Usage
 
 ```bash
-$ docker pull pm2hive/docker-volume
+$ docker pull keymetrics/pm2-docker-alpine
 ```
 
 Versions available:
 
-- pm2hive/docker-volume:latest with Node.js 6
-- pm2hive/docker-volume:4 with Node.js 4
-- pm2hive/docker-volume:0.12 with Node.js 0.12
+- keymetrics/pm2-docker-alpine:latest with Node.js 6
+- keymetrics/pm2-docker-alpine:4 with Node.js 4
+- keymetrics/pm2-docker-alpine:0.12 with Node.js 0.12
 
 These images are automatically built from the Docker hub based on this Github repository branch arrangement.
 
-[Hub link](https://hub.docker.com/r/pm2hive/docker-volume/)
+[Hub link](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
 ### Running the container
 
@@ -28,9 +28,9 @@ Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/appl
 
 ```bash
 # Get example app
-$ git clone https://github.com/pm2hive/docker-volume
+$ git clone https://github.com/keymetrics/pm2-docker-alpine
 # Run example app, mounted as a volume
-$ docker run -p 80:3000 -v `pwd`/example_app:/app pm2hive/docker-volume
+$ docker run -p 80:3000 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
 ```
 
 For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
