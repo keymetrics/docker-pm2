@@ -2,6 +2,7 @@ FROM mhart/alpine-node:latest
 MAINTAINER Keymetrics <contact@keymetrics.io>
 
 RUN npm install pm2@next -g
+RUN pm2 install pm2-auto-pull
 
 VOLUME ["/app"]
 
