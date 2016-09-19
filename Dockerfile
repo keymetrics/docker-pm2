@@ -1,7 +1,7 @@
 FROM mhart/alpine-node:latest
 MAINTAINER Keymetrics <contact@keymetrics.io>
 
-RUN npm install pm2@next -g
+RUN npm install pm2 -g
 
 VOLUME ["/app"]
 
