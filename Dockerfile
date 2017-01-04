@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:latest
+FROM node:alpine
 MAINTAINER Keymetrics <contact@keymetrics.io>
 
 RUN npm install pm2 -g
