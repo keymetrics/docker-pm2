@@ -14,12 +14,11 @@ $ docker pull keymetrics/pm2-docker-alpine
 
 Versions available:
 
-- keymetrics/pm2-docker-alpine:latest with the latest version of Node.js
-- keymetrics/pm2-docker-alpine:7 with Node.js 7.4
-- keymetrics/pm2-docker-alpine:6 with Node.js 6.9
-- keymetrics/pm2-docker-alpine:4 with Node.js 4.7
+- keymetrics/pm2-docker-alpine:latest with Node.js 6
+- keymetrics/pm2-docker-alpine:4 with Node.js 4
+- keymetrics/pm2-docker-alpine:0.12 with Node.js 0.12
 
-These images are automatically built from the Docker hub based on this Github repository folder arrangement.
+These images are automatically built from the Docker hub based on this Github repository branch arrangement.
 
 [Hub link](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
