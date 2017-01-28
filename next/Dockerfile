@@ -1,4 +1,4 @@
-FROM node:7-alpine
+FROM node:alpine
 MAINTAINER Keymetrics <contact@keymetrics.io>
 
 RUN npm install pm2@next -g

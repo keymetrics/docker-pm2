@@ -18,6 +18,7 @@ Versions available:
 - keymetrics/pm2-docker-alpine:7 with Node.js 7.4
 - keymetrics/pm2-docker-alpine:6 with Node.js 6.9
 - keymetrics/pm2-docker-alpine:4 with Node.js 4.7
+- keymetrics/pm2-docker-alpine:next with Node.js latest and pm2@next
 
 These images are automatically built from the Docker hub based on this Github repository folder arrangement.
 
