@@ -8,18 +8,9 @@ This Docker image in association with PM2, increase application uptime, increase
 
 
 
-Versions available:
 
-- keymetrics/pm2-docker-alpine:latest with `node:alpine`
-- keymetrics/pm2-docker-alpine:8 with `node:8-alpine`
-- keymetrics/pm2-docker-alpine:7 with `node:7-alpine`
-- keymetrics/pm2-docker-alpine:6 with `node:6-alpine`
-- keymetrics/pm2-docker-alpine:4 with `node:4-alpine`
-- keymetrics/pm2-docker-alpine:next with `node:alpine` and `pm2@next`
 
-These images are automatically built from the Docker hub based on this Github repository folder arrangement.
 
-[Hub link](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
 ### Running the container
 
