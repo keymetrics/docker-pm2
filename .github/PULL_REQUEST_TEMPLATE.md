@@ -21,7 +21,7 @@ Software go round, pay it forward!
 ## Pre-Submission Checklist
 
 - [ ] Opened an issue discussing these changes before opening the PR
-- [ ] Ran the tests via `bash test/test.sh`
+- [ ] Run the tests via `bash test/test.sh`
 - [ ] Included comprehensive and convincing tests for changes
 
 ## Issues
