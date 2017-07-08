@@ -3,6 +3,9 @@
 ![https://hub.docker.com/r/keymetrics/pm2-docker-alpine/](http://dockeri.co/image/keymetrics/pm2-docker-alpine)
 
 ![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
+![LICENSE](https://img.shields.io/npm/l/express.svg)
+![https://github.com/keymetrics/pm2-docker-alpine/contributors](https://img.shields.io/github/contributors/keymetrics/pm2-docker-alpine.svg)
+![https://github.com/keymetrics/pm2-docker-alpine](https://img.shields.io/github/stars/keymetrics/pm2-docker-alpine.svg?style=flat)
 
 Production ready nodeJS Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
