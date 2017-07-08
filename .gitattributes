@@ -1,0 +1,3 @@
+scripts/* linguist-documentation=false
+test/* linguist-documentation=false
+example_app/* linguist-documentation=false
