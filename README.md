@@ -102,6 +102,9 @@ Command | Description
 ```$ docker exec -it <container-id> pm2 show``` | Get more information about a process
 ```$ docker exec -it <container-id> pm2 reload all``` | 0sec downtime reload all applications
 
+## Documentation
+
+The documentation can be found [here](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/).
 
 ## License
 
