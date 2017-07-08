@@ -1,3 +1,6 @@
-scripts/* linguist-documentation=false
-test/* linguist-documentation=false
-example_app/* linguist-documentation=false
+* text eol=lf
+
+*.yml text
+*.js text
+*.sh text
+Dockerfile text
