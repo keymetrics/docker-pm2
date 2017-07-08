@@ -96,4 +96,7 @@ $ docker exec -it <container_id> pm2 install pm2-auto-pull
 
 ## License
 
-MIT
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+
+License information for
+the software contained in this image can be found [here](https://github.com/Unitech/pm2/blob/master/GNU-AGPL-3.0.txt) (pm2) and [here](https://github.com/nodejs/node/blob/master/LICENSE) (node).
