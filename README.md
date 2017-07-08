@@ -12,6 +12,17 @@ The goal of this image is to wrap your applications into a proper Node.js produc
 
 Further than that, using PM2 as a layer between the container and the application brings PM2 features like [application declaration file](http://pm2.keymetrics.io/docs/usage/application-declaration/), [customizable log system](http://pm2.keymetrics.io/docs/usage/log-management/), [source map support](http://pm2.keymetrics.io/docs/usage/source-map-support/) and other great features to manage your Node.js application in production environment.
 
+#### Tags available:
+
+- keymetrics/pm2-docker-alpine:`latest` with `node:alpine`
+- keymetrics/pm2-docker-alpine:`8` with `node:8-alpine`
+- keymetrics/pm2-docker-alpine:`7` with `node:7-alpine`
+- keymetrics/pm2-docker-alpine:`6` with `node:6-alpine`
+- keymetrics/pm2-docker-alpine:`4` with `node:4-alpine`
+- keymetrics/pm2-docker-alpine:`next` with `node:alpine` and `pm2@next`
+
+These images are automatically built from the [Docker Hub](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/) based on this Github repository folder arrangement.
+
 
 
 
