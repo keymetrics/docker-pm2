@@ -1,0 +1,6 @@
+* text eol=lf
+
+*.yml text
+*.js text
+*.sh text
+Dockerfile text
