@@ -16,47 +16,15 @@ This Docker image in association with PM2, increase application uptime, increase
 
 ```
 
-## Actions
 
-### Monitoring CPU/Usage of each process
 
-```bash
-$ docker exec -it <container_id> pm2 monit
-```
 
-### Listing managed processes
 
-```bash
-$ docker exec -it <container_id> pm2 list
-```
 
-### Get more information about a process
 
-```bash
-$ docker exec -it <container_id> pm2 show <app_name>
-```
 
-### 0sec downtime reload all applications
 
-```bash
-$ docker exec -it <container_id> pm2 reload all
-```
 
-### Automatically synchronize your application with git
-
-Add into your Dockerfile:
-
-```
-RUN pm2 install pm2-auto-pull
-```
-
-Or try it:
-
-```bash
-$ docker exec -it <container_id> pm2 install pm2-auto-pull
-```
-
-*Make sure the .git is present in your application source folder.*
 ## Useful commands 
 
 Command | Description
