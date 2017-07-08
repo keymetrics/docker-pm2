@@ -1,9 +1,9 @@
 # PM2
 
-![https://hub.docker.com/r/keymetrics/pm2-docker-alpine/](http://dockeri.co/image/keymetrics/pm2-docker-alpine)
+[![Docker Hub](http://dockeri.co/image/keymetrics/pm2-docker-alpine)](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
 
-![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
-![LICENSE](https://img.shields.io/npm/l/express.svg)
+[![Travis CI](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)](https://travis-ci.org/keymetrics/pm2-docker-alpine)
+[![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
 ![https://github.com/keymetrics/pm2-docker-alpine/contributors](https://img.shields.io/github/contributors/keymetrics/pm2-docker-alpine.svg)
 ![https://github.com/keymetrics/pm2-docker-alpine](https://img.shields.io/github/stars/keymetrics/pm2-docker-alpine.svg?style=flat)
 
