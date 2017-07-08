@@ -148,6 +148,13 @@ Command | Description
 
 The documentation can be found [here](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/).
 
+## Authors
+* **Alexandre Strzelewicz** - [Unitech](https://github.com/Unitech)
+* **Simone Primarosa** - [simonepri](https://github.com/simonepri)
+
+See also the list of [contributors](https://github.com/simonepri/roboprime/contributors) who participated in this project.
+
+
 ## License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
