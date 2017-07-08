@@ -62,22 +62,73 @@ $ docker build -t your-app-name .
 $ docker run your-app-name .
 ```
 
+## Custom configurations
 
+### Enable Git auto-pull
 
-
-
-
+If you wanto to [Automatically synchronize your application with git](https://github.com/pm2-hive/pm2-auto-pull) add this into your Dockerfile:
 
 ```
+RUN pm2 install pm2-auto-pull
+```
+*Make sure the .git is present in your application source folder.*
 
+## Logging Format option
 
+If you want to change the log output format you can select one of this options:
 
+- **--json** to output logs in JSON
+- **--format** to output logs in key=val style
+- **--raw** to display logs in raw format
 
+To use one of this flag, you just need to pass them to pm2-docker:
 
+```
+CMD ["pm2-docker", "--json", "start", "pm2.json"]
+```
 
+See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for all available configuration.
 
+## Use Keymetrics.io
 
+[Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
 
+To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXX` and –secret `YYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
+
+Example with the CLI options via a Dockerfile:
+
+```
+CMD ["pm2-docker", "--public", "XXX", "--secret", "YYY", "start", "pm2.json"]
+```
+
+Or via environment variables:
+
+```
+ENV KEYMETRICS_PUBLIC=XXX
+ENV KEYMETRICS_SECRET=YYY
+```
+
+## Enabling Graceful Shutdown
+
+When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successfull graceful shutdown.
+
+Catching a shutdown signal is straightforward. You need to add a listener in your Node.js applications and execute anything needed before stopping the app:
+
+```javascript
+process.on('SIGINT', function() {
+  db.stop(function(err) {
+    process.exit(err ? 1 : 0);
+  });
+});
+```
+By default PM2 will wait `1600ms` before sending a final `SIGKILL` signal. You can modify this delay by setting the `kill_timeout` option inside your application configuration file.
+
+## Expose health endpoint
+The `--web [port]` option allows to expose all vital signs (docker instance + application) via a JSON API.
+
+```
+CMD ["pm2-docker", "--web", "port", "start", "pm2.json"]
+```
 
 ## Useful commands 
 
