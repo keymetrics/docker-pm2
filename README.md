@@ -24,6 +24,43 @@ Further than that, using PM2 as a layer between the container and the applicatio
 These images are automatically built from the [Docker Hub](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/) based on this Github repository folder arrangement.
 
 
+## Usage
+
+### Create a `Dockerfile` in your Node.js app project
+
+```dockerfile
+FROM keymetrics/pm2-docker-alpine:latest
+
+# You can insert here your custom docker commands if you need it.
+
+CMD [ "pm2-docker", "start", "pm2.json" ]
+```
+See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
+
+### Create a `pm2.json` in your Node.js app project
+
+```json
+{
+  "apps": [{
+    "name": "your-app-name",
+    "script": "app.js",
+    "env": {
+      "production": true
+    }
+  }]
+}
+```
+
+See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
+<br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
+
+### Build and Run your image
+From your Node.js app project folder launch those commands:
+
+```bash
+$ docker build -t your-app-name .
+$ docker run your-app-name .
+```
 
 
 
