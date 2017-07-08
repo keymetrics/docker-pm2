@@ -1,6 +1,6 @@
 # PM2
 
-[![dockeri.co](http://dockeri.co/image/keymetrics/pm2-docker-alpine)](https://registry.hub.docker.com/keymetrics/pm2-docker-alpine/)
+![https://hub.docker.com/r/keymetrics/pm2-docker-alpine/](http://dockeri.co/image/keymetrics/pm2-docker-alpine)
 
 ![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
 
