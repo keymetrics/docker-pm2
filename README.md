@@ -12,15 +12,8 @@ This Docker image in association with PM2, increase application uptime, increase
 
 
 
-### Running the container
 
-Make sure you declared a [process file](http://pm2.keymetrics.io/docs/usage/application-declaration/) called process.yml, this file will be started by PM2.
 
-```bash
-# Get example app
-$ git clone https://github.com/keymetrics/pm2-docker-alpine
-# Run example app, mounted as a volume
-$ docker run -p 80:3000 -v `pwd`/example_app:/app keymetrics/pm2-docker-alpine
 ```
 
 For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
