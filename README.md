@@ -2,9 +2,15 @@
 
 ![https://travis-ci.org/keymetrics/pm2-docker-alpine](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)
 
-Node.js lightweight Docker image including the [PM2 runtime](http://pm2.keymetrics.io/) for production applications.
+Production ready nodeJS Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
-This Docker image in association with PM2, increase application uptime, increase performance (spawn multiple processes and [load-balance network query](http://pm2.keymetrics.io/docs/usage/cluster-mode/) without any code change) and allow graceful state change, adapted to production environment.
+The goal of this image is to wrap your applications into a proper Node.js production environment. It solves major issues when running Node.js applications inside a container like:
+
+- Correct PID 1 signals Handling & Forwarding
+- Graceful application Start and Shutdown
+- Seamless application clustering to increase performance and reliability
+
+Further than that, using PM2 as a layer between the container and the application brings PM2 features like [application declaration file](http://pm2.keymetrics.io/docs/usage/application-declaration/), [customizable log system](http://pm2.keymetrics.io/docs/usage/log-management/), [source map support](http://pm2.keymetrics.io/docs/usage/source-map-support/) and other great features to manage your Node.js application in production environment.
 
 
 
