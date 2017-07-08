@@ -16,14 +16,6 @@ This Docker image in association with PM2, increase application uptime, increase
 
 ```
 
-For [Keymetrics](https://keymetrics.io/) linking you can set the extra env variables:
-
-```
--e "KEYMETRICS_SECRET=YYY
--e "KEYMETRICS_PUBLIC=XXX"
--e "INSTANCE_NAME=hostname"
-```
-
 ### Log output
 
 Append to pm2-docker CMD directive:
