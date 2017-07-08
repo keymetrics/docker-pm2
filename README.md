@@ -16,14 +16,6 @@ This Docker image in association with PM2, increase application uptime, increase
 
 ```
 
-### Log output
-
-Append to pm2-docker CMD directive:
-
-- **--json** to output logs in JSON
-- **--format** to output logs in key=val style
-- **--raw** to display logs in raw format
-
 ## Actions
 
 ### Monitoring CPU/Usage of each process
