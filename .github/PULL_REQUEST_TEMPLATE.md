@@ -1,5 +1,5 @@
 <!--
-Thank you for taking the time to open an PR for restify! If this is your first
+Thank you for taking the time to open an PR! If this is your first
 time here, welcome to our community! When asking for help here, keep in mind most of us are volunteers
 contributing our daily work back to the community at no cost (and often for no
 reward). Please be respectful!
