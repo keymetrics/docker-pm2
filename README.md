@@ -93,6 +93,15 @@ $ docker exec -it <container_id> pm2 install pm2-auto-pull
 ```
 
 *Make sure the .git is present in your application source folder.*
+## Useful commands 
+
+Command | Description
+--------|------------
+```$ docker exec -it <container-id> pm2 monit``` | Monitoring CPU/Usage of each process
+```$ docker exec -it <container-id> pm2 list``` | Listing managed processes
+```$ docker exec -it <container-id> pm2 show``` | Get more information about a process
+```$ docker exec -it <container-id> pm2 reload all``` | 0sec downtime reload all applications
+
 
 ## License
 
