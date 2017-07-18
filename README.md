@@ -42,7 +42,7 @@ Let's assume the following folder structure for your project.
     `-- Dockerfile   (we will create this in the following steps)
 ```
 
-### Create a `pm2 ecosystem` file
+### Create a pm2 ecosystem file
 
 Create a new file called `pm2.json` with the following content:
 
@@ -61,7 +61,7 @@ Create a new file called `pm2.json` with the following content:
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/#generate-configuration) for more information about how to configure the `ecosystem` file.
 
-### Create a `Dockerfile` file
+### Create a Dockerfile file
 
 Create a new file called `Dockerfile` with the following content:
 
