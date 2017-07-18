@@ -31,32 +31,58 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
 
 ## Usage
 
-### Create a `Dockerfile` in your Node.js app project
+Let's assume the following folder structure for your project.
 
-```dockerfile
-FROM keymetrics/pm2-docker-alpine:latest
-
-# You can insert here your custom docker commands if you need it.
-
-CMD [ "pm2-docker", "start", "pm2.json" ]
 ```
-See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
+`-- your-app-name/
+    |-- src/
+        `-- app.js
+    |-- package.json
+    |-- pm2.json     (we will create this in the following steps)
+    `-- Dockerfile   (we will create this in the following steps)
+```
 
-### Create a `pm2.json` in your Node.js app project
+### Create a pm2 ecosystem file
+
+Create a new file called `pm2.json` with the following content:
 
 ```json
 {
   "apps": [{
     "name": "your-app-name",
-    "script": "app.js",
+    "script": "src/app.js",
     "env": {
       "production": true
     }
   }]
 }
 ```
+> You can choose the name of the `ecosystem` file arbitrarly, but we will assume you called it `pm2.json` in the following steps.
 
-See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
+See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/#generate-configuration) for more information about how to configure the `ecosystem` file.
+
+### Create a Dockerfile file
+
+Create a new file called `Dockerfile` with the following content:
+
+```dockerfile
+FROM keymetrics/pm2-docker-alpine:latest
+
+# Bundle APP files
+COPY src src/
+COPY package.json .
+COPY pm2.json .
+
+# Install app dependencies
+ENV NPM_CONFIG_LOGLEVEL warn
+RUN npm install --production
+
+# Show current folder structure in logs
+RUN ls -al -R
+
+CMD [ "pm2-docker", "start", "pm2.json" ]
+```
+See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
 <br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
 
 ### Build and Run your image
@@ -134,6 +160,7 @@ The `--web [port]` option allows to expose all vital signs (docker instance + ap
 ```
 CMD ["pm2-docker", "start", "pm2.json", "--web"]
 ```
+or
 ```
 CMD ["pm2-docker", "start", "pm2.json", "--web", "port"]
 ```
@@ -155,7 +182,7 @@ The documentation can be found [here](http://pm2.keymetrics.io/docs/usage/docker
 * **Alexandre Strzelewicz** - [Unitech](https://github.com/Unitech)
 * **Simone Primarosa** - [simonepri](https://github.com/simonepri)
 
-See also the list of [contributors](https://github.com/simonepri/roboprime/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/keymetrics/docker-pm2/contributors) who participated in this project.
 
 
 ## License
