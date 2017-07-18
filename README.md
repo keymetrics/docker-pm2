@@ -31,8 +31,18 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
 
 ## Usage
 
-### Create a `pm2 process file` in your Node.js app project
-PM2 empowers your process management workflow. It allows you to fine-tune the behavior, options, environment variables, logs files of each application via a process file. It’s particularly useful for micro-service based applications.
+Let's assume the following folder structure for your project.
+
+```
+`-- your-app-name/
+    |-- src/
+        `-- app.js
+    |-- package.json
+    |-- pm2.json     (we will create this in the following steps)
+    `-- Dockerfile   (we will create this in the following steps)
+```
+
+### Create a `pm2 ecosystem` file
 
 Create a new file called `pm2.json` with the following content:
 
@@ -40,26 +50,18 @@ Create a new file called `pm2.json` with the following content:
 {
   "apps": [{
     "name": "your-app-name",
-    "script": "app.js",
+    "script": "src/app.js",
     "env": {
       "production": true
     }
   }]
 }
 ```
-> You can choose the name of the `process file` arbitrarly, but we will assume you called it `pm2.json` in the following steps.
+> You can choose the name of the `ecosystem` file arbitrarly, but we will assume you called it `pm2.json` in the following steps.
 
-See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the `pm2 process file`.
+See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/#generate-configuration) for more information about how to configure the `ecosystem` file.
 
-### Create a `Dockerfile` in your Node.js app project
-Let's assume that folder structure for your project.
-```
-`- your-app-name/
-   |-- src/
-   |-- package.json
-   |-- pm2.json     (created in the previous step)
-   `-- Dockerfile   (we will create this now)
-```
+### Create a `Dockerfile` file
 
 Create a new file called `Dockerfile` with the following content:
 
