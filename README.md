@@ -89,7 +89,7 @@ If you want to change the log output format you can select one of this options:
 To use one of this flag, you just need to pass them to pm2-docker:
 
 ```
-CMD ["pm2-docker", "--json", "start", "pm2.json"]
+CMD ["pm2-docker", "start", "--json", "pm2.json"]
 ```
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for all available configuration.
@@ -103,7 +103,7 @@ To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI opt
 Example with the CLI options via a Dockerfile:
 
 ```
-CMD ["pm2-docker", "--public", "XXX", "--secret", "YYY", "start", "pm2.json"]
+CMD ["pm2-docker", "start", "--public", "XXX", "--secret", "YYY", "pm2.json"]
 ```
 
 Or via environment variables:
@@ -132,7 +132,10 @@ By default PM2 will wait `1600ms` before sending a final `SIGKILL` signal. You c
 The `--web [port]` option allows to expose all vital signs (docker instance + application) via a JSON API.
 
 ```
-CMD ["pm2-docker", "--web", "port", "start", "pm2.json"]
+CMD ["pm2-docker", "start", "pm2.json", "--web"]
+```
+```
+CMD ["pm2-docker", "start", "pm2.json", "--web", "port"]
 ```
 
 ## Useful commands 
