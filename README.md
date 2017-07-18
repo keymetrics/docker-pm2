@@ -64,7 +64,7 @@ From your Node.js app project folder launch those commands:
 
 ```bash
 $ docker build -t your-app-name .
-$ docker run your-app-name .
+$ docker run your-app-name
 ```
 
 ## Custom configurations
