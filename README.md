@@ -31,7 +31,10 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
 
 ## Usage
 
-### Create a `pm2.json` in your Node.js app project
+### Create a `pm2 process file` in your Node.js app project
+PM2 empowers your process management workflow. It allows you to fine-tune the behavior, options, environment variables, logs files of each application via a process file. It’s particularly useful for micro-service based applications.
+
+Create a new file called `pm2.json` with the following content:
 
 ```json
 {
@@ -44,11 +47,21 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
   }]
 }
 ```
+> You can choose the name of the `process file` arbitrarly, but we will assume you called it `pm2.json` in the following steps.
 
-See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
+See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the `pm2 process file`.
 
 ### Create a `Dockerfile` in your Node.js app project
-Assuming that `pm2.json` and `package.json` are in the same folder of the `Dockerfile` and that the `src` folder contains your source code.
+Let's assume that folder structure for your project.
+```
+`- your-app-name/
+   |-- src/
+   |-- package.json
+   |-- pm2.json     (created in the previous step)
+   `-- Dockerfile   (we will create this now)
+```
+
+Create a new file called `Dockerfile` with the following content:
 
 ```dockerfile
 FROM keymetrics/pm2-docker-alpine:latest
@@ -76,7 +89,7 @@ From your Node.js app project folder launch those commands:
 
 ```bash
 $ docker build -t your-app-name .
-$ docker run your-app-name .
+$ docker run your-app-name
 ```
 
 ## Custom configurations
@@ -146,6 +159,7 @@ The `--web [port]` option allows to expose all vital signs (docker instance + ap
 ```
 CMD ["pm2-docker", "start", "pm2.json", "--web"]
 ```
+or
 ```
 CMD ["pm2-docker", "start", "pm2.json", "--web", "port"]
 ```
