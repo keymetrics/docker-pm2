@@ -81,7 +81,6 @@ RUN ls -al -R
 CMD [ "pm2-docker", "start", "pm2.json" ]
 ```
 See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
-
 <br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
 
 ### Build and Run your image
