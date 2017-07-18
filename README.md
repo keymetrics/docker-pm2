@@ -31,17 +31,6 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
 
 ## Usage
 
-### Create a `Dockerfile` in your Node.js app project
-
-```dockerfile
-FROM keymetrics/pm2-docker-alpine:latest
-
-# You can insert here your custom docker commands if you need it.
-
-CMD [ "pm2-docker", "start", "pm2.json" ]
-```
-See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
-
 ### Create a `pm2.json` in your Node.js app project
 
 ```json
@@ -55,6 +44,28 @@ See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#u
   }]
 }
 ```
+
+### Create a `Dockerfile` in your Node.js app project
+Assuming that `pm2.json` and `package.json` are in the same folder of the `Dockerfile` and that the `src` folder contains your source code.
+
+```dockerfile
+FROM keymetrics/pm2-docker-alpine:latest
+
+# Bundle APP files
+COPY src src/
+COPY package.json .
+COPY pm2.json .
+
+# Install app dependencies
+ENV NPM_CONFIG_LOGLEVEL warn
+RUN npm install --production
+
+# Show current folder structure in logs
+RUN ls -al -R
+
+CMD [ "pm2-docker", "start", "pm2.json" ]
+```
+See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
 <br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
