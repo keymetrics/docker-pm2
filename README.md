@@ -45,6 +45,8 @@ These images are automatically built from the [Docker Hub](https://hub.docker.co
 }
 ```
 
+See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
+
 ### Create a `Dockerfile` in your Node.js app project
 Assuming that `pm2.json` and `package.json` are in the same folder of the `Dockerfile` and that the `src` folder contains your source code.
 
@@ -67,7 +69,6 @@ CMD [ "pm2-docker", "start", "pm2.json" ]
 ```
 See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
 
-See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for more information about how to configure the pm2 `process file`.
 <br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
 
 ### Build and Run your image
