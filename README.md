@@ -182,7 +182,7 @@ The documentation can be found [here](http://pm2.keymetrics.io/docs/usage/docker
 * **Alexandre Strzelewicz** - [Unitech](https://github.com/Unitech)
 * **Simone Primarosa** - [simonepri](https://github.com/simonepri)
 
-See also the list of [contributors](https://github.com/simonepri/roboprime/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/keymetrics/docker-pm2/contributors) who participated in this project.
 
 
 ## License
