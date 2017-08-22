@@ -97,7 +97,7 @@ $ docker run your-app-name
 
 ### Enable Git auto-pull
 
-If you wanto to [Automatically synchronize your application with git](https://github.com/pm2-hive/pm2-auto-pull) add this into your Dockerfile:
+If you want to [Automatically synchronize your application with git](https://github.com/pm2-hive/pm2-auto-pull) add this into your Dockerfile:
 
 ```
 RUN pm2 install pm2-auto-pull
