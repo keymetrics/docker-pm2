@@ -1,11 +1,11 @@
 # PM2
 
-[![Docker Hub](http://dockeri.co/image/keymetrics/pm2-docker-alpine)](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/)
+[![Docker Hub](http://dockeri.co/image/keymetrics/pm2)](https://hub.docker.com/r/keymetrics/pm2/)
 
-[![Travis CI](https://travis-ci.org/keymetrics/pm2-docker-alpine.svg?branch=master)](https://travis-ci.org/keymetrics/pm2-docker-alpine)
+[![Travis CI](https://travis-ci.org/keymetrics/pm2.svg?branch=master)](https://travis-ci.org/keymetrics/pm2)
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/keymetrics/pm2-docker-alpine.svg)](https://github.com/keymetrics/pm2-docker-alpine/contributors)
-[![Stars](https://img.shields.io/github/stars/keymetrics/pm2-docker-alpine.svg?style=flat)](https://github.com/keymetrics/pm2-docker-alpine/stargazers)
+[![Contributors](https://img.shields.io/github/contributors/keymetrics/pm2.svg)](https://github.com/keymetrics/pm2/contributors)
+[![Stars](https://img.shields.io/github/stars/keymetrics/pm2.svg?style=flat)](https://github.com/keymetrics/pm2/stargazers)
 
 Production ready nodeJS Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
@@ -19,14 +19,14 @@ Further than that, using PM2 as a layer between the container and the applicatio
 
 #### Tags available:
 
-- keymetrics/pm2-docker-alpine:`latest` with `node:alpine`
-- keymetrics/pm2-docker-alpine:`8` with `node:8-alpine`
-- keymetrics/pm2-docker-alpine:`7` with `node:7-alpine`
-- keymetrics/pm2-docker-alpine:`6` with `node:6-alpine`
-- keymetrics/pm2-docker-alpine:`4` with `node:4-alpine`
-- keymetrics/pm2-docker-alpine:`next` with `node:alpine` and `pm2@next`
+- keymetrics/pm2:`latest` with `node:alpine`
+- keymetrics/pm2:`8` with `node:8-alpine`
+- keymetrics/pm2:`7` with `node:7-alpine`
+- keymetrics/pm2:`6` with `node:6-alpine`
+- keymetrics/pm2:`4` with `node:4-alpine`
+- keymetrics/pm2:`next` with `node:alpine` and `pm2@next`
 
-These images are automatically built from the [Docker Hub](https://hub.docker.com/r/keymetrics/pm2-docker-alpine/) based on this Github repository folder arrangement.
+These images are automatically built from the [Docker Hub](https://hub.docker.com/r/keymetrics/pm2/) based on this Github repository folder arrangement.
 
 
 ## Usage
@@ -66,7 +66,7 @@ See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declarat
 Create a new file called `Dockerfile` with the following content:
 
 ```dockerfile
-FROM keymetrics/pm2-docker-alpine:latest
+FROM keymetrics/pm2:latest
 
 # Bundle APP files
 COPY src src/
@@ -165,7 +165,7 @@ or
 CMD ["pm2-docker", "start", "pm2.json", "--web", "port"]
 ```
 
-## Useful commands 
+## Useful commands
 
 Command | Description
 --------|------------

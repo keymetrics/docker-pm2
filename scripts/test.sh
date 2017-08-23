@@ -23,9 +23,9 @@ function ispec {
   success "$1"
 }
 
-docker pull keymetrics/pm2-docker-alpine
+docker pull keymetrics/pm2
 
-docker run -d -p 80:3000 -v `pwd`/example_app:/app -e "APP=process.yml" keymetrics/pm2-docker-alpine
+docker run -d -p 80:3000 -v `pwd`/example_app:/app -e "APP=process.yml" keymetrics/pm2
 
 sleep 2
 
@@ -33,4 +33,4 @@ curl http://localhost:80/
 spec "Should have got data from running app in docker container"
 
 # Stopping container
-docker stop $(docker ps -q --filter ancestor=keymetrics/pm2-docker-alpine)
+docker stop $(docker ps -q --filter ancestor=keymetrics/pm2)
