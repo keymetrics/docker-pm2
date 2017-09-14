@@ -2,10 +2,6 @@
 
 [![Docker Hub](http://dockeri.co/image/keymetrics/pm2)](https://hub.docker.com/r/keymetrics/pm2/)
 
-[![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/keymetrics/pm2.svg)](https://github.com/keymetrics/pm2/contributors)
-[![Stars](https://img.shields.io/github/stars/keymetrics/pm2.svg?style=flat)](https://github.com/keymetrics/pm2/stargazers)
-
 Production ready nodeJS Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
 The goal of this image is to wrap your applications into a proper Node.js production environment. It solves major issues when running Node.js applications inside a container like:
