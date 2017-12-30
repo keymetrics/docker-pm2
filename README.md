@@ -99,22 +99,6 @@ RUN pm2 install pm2-auto-pull
 ```
 *Make sure the .git is present in your application source folder.*
 
-## Logging Format option
-
-If you want to change the log output format you can select one of this options:
-
-- **--json** to output logs in JSON
-- **--format** to output logs in key=val style
-- **--raw** to display logs in raw format
-
-To use one of this flag, you just need to pass them to pm2-docker:
-
-```
-CMD ["pm2-docker", "start", "--json", "pm2.json"]
-```
-
-See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for all available configuration.
-
 ## Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
