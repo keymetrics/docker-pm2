@@ -99,6 +99,16 @@ RUN pm2 install pm2-auto-pull
 ```
 *Make sure the .git is present in your application source folder.*
 
+## Enable Logs rotation
+
+If you want to [Automatically rotate logs of processes managed by PM2](https://github.com/keymetrics/pm2-logrotate) add this into your Dockerfile:
+
+```
+RUN pm2 install pm2-logrotate
+```
+
+See the [documentation](http://pm2.keymetrics.io/docs/usage/log-management/#log-configuration) for all available configurations.
+
 ## Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
