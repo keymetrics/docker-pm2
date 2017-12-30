@@ -99,7 +99,7 @@ RUN pm2 install pm2-auto-pull
 ```
 *Make sure the .git is present in your application source folder.*
 
-## Enable Monitor server
+### Enable Monitor server
 
 If you want to [Automatically monitor vital signs of your server](https://github.com/keymetrics/pm2-server-monit) add this into your Dockerfile:
 
@@ -107,7 +107,7 @@ If you want to [Automatically monitor vital signs of your server](https://github
 RUN pm2 install pm2-server-monit
 ```
 
-## Use Keymetrics.io dashboard
+### Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
 
@@ -124,7 +124,7 @@ Make sure that the ports 80 (TCP outbound), 443 (HTTPS outbound) and 43554 (TCP 
 
 See the [troubleshooting](http://docs.keymetrics.io/docs/pages/faq-troubleshooting/#troubleshooting-for-keymetrics-pm2) in case you encounter any problem.
 
-## Enabling Graceful Shutdown
+### Enabling Graceful Shutdown
 
 When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successful graceful shutdown.
 
@@ -139,7 +139,7 @@ process.on('SIGINT', function() {
 ```
 By default PM2 will wait `1600ms` before sending a final `SIGKILL` signal. You can modify this delay by setting the `kill_timeout` option inside your application configuration file.
 
-## Expose health endpoint
+### Expose health endpoint
 The `--web [port]` option allows to expose all vital signs (docker instance + application) via a JSON API.
 
 ```
