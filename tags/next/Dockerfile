@@ -4,7 +4,7 @@ LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 # Install pm2
 RUN npm install pm2@next -g
 
-# Expose ports
+# Expose ports needed to use Keymetrics.io
 EXPOSE 80 443 43554
 
 # Start pm2.json process file
