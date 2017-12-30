@@ -1,6 +1,7 @@
 FROM node:alpine
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
+# Install pm2
 RUN npm install pm2@next -g
 
 # Expose ports

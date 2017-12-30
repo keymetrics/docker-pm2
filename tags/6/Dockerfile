@@ -1,6 +1,7 @@
 FROM node:6-alpine
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
+# Install pm2
 RUN npm install pm2 -g
 
 # Expose ports
