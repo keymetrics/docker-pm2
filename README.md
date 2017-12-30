@@ -99,6 +99,14 @@ RUN pm2 install pm2-auto-pull
 ```
 *Make sure the .git is present in your application source folder.*
 
+## Enable Monitor server
+
+If you want to [Automatically monitor vital signs of your server](https://github.com/keymetrics/pm2-server-monit) add this into your Dockerfile:
+
+```
+RUN pm2 install pm2-server-monit
+```
+
 ## Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
