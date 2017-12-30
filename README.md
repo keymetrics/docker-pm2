@@ -16,7 +16,6 @@ Further than that, using PM2 as a layer between the container and the applicatio
 
 - keymetrics/pm2:`latest` with `node:alpine`
 - keymetrics/pm2:`8` with `node:8-alpine`
-- keymetrics/pm2:`7` with `node:7-alpine`
 - keymetrics/pm2:`6` with `node:6-alpine`
 - keymetrics/pm2:`4` with `node:4-alpine`
 - keymetrics/pm2:`next` with `node:alpine` and `pm2@next`
