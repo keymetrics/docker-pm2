@@ -115,24 +115,22 @@ CMD ["pm2-docker", "start", "--json", "pm2.json"]
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for all available configuration.
 
-## Use Keymetrics.io
+## Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
 
-To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXX` and –secret `YYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
+To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXXX` and –secret `YYYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
 
-Example with the CLI options via a Dockerfile:
+From your Node.js app project folder launch those commands:
 
-```
-CMD ["pm2-docker", "start", "--public", "XXX", "--secret", "YYY", "pm2.json"]
+```bash
+$ docker build -t your-app-name .
+$ docker run -e KEYMETRICS_PUBLIC=XXXX -e KEYMETRICS_SECRET=YYYY your-app-name
 ```
 
-Or via environment variables:
+Make sure that the ports 80 (TCP outbound), 443 (HTTPS outbound) and 43554 (TCP outbound) are allowed on your firewall.
 
-```
-ENV KEYMETRICS_PUBLIC=XXX
-ENV KEYMETRICS_SECRET=YYY
-```
+See the [troubleshooting](http://docs.keymetrics.io/docs/pages/faq-troubleshooting/#troubleshooting-for-keymetrics-pm2) in case you encounter any problem.
 
 ## Enabling Graceful Shutdown
 
