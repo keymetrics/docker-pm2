@@ -52,7 +52,7 @@ Create a new file called `pm2.json` with the following content:
   }]
 }
 ```
-> You can choose the name of the `ecosystem` file arbitrarly, but we will assume you called it `pm2.json` in the following steps.
+> You can choose the name of the `ecosystem` file arbitrarily, but we will assume you called it `pm2.json` in the following steps.
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/#generate-configuration) for more information about how to configure the `ecosystem` file.
 
@@ -136,7 +136,7 @@ ENV KEYMETRICS_SECRET=YYY
 
 ## Enabling Graceful Shutdown
 
-When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successfull graceful shutdown.
+When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successful graceful shutdown.
 
 Catching a shutdown signal is straightforward. You need to add a listener in your Node.js applications and execute anything needed before stopping the app:
 
