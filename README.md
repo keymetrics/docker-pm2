@@ -44,8 +44,8 @@ keymetrics/pm2:`4-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)
 You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
 > The build process of these images is automatically triggered each time [NodeJS's Docker images](https://hub.docker.com/r/library/node/tags/) are built.  
-The build process of these images is automatically triggered each time [Docker PM2's GitHub repo](https://hub.docker.com/r/library/node/tags/) master branch is pushed.  
-The build process of these images is automatically triggered each time [PM2's GitHub repo](https://hub.docker.com/r/library/node/tags/) master branch is pushed.  
+The build process of these images is automatically triggered each time [Docker PM2's GitHub repo](https://github.com/keymetrics/docker-pm2) master branch is pushed.  
+The build process of these images is automatically triggered each time [PM2's GitHub repo](https://github.com/Unitech/pm2) master branch is pushed.  
 
 ## Usage
 
