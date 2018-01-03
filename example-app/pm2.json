@@ -5,13 +5,19 @@
     "instances": 0,
     "exec_mode": "cluster",
     "env": {
-      "production": true
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
     }
   }, {
     "name": "example-app-worker",
     "script": "src/worker.js",
     "env": {
-      "production": true
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
     },
     "instances": 1,
     "exec_mode": "cluster"
