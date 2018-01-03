@@ -8,4 +8,4 @@ RUN npm install pm2 -g
 EXPOSE 80 443 43554
 
 # Start pm2.json process file
-CMD ["pm2-docker", "start", "pm2.json"]
+CMD ["pm2-runtime", "start", "pm2.json"]
