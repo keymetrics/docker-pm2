@@ -27,7 +27,7 @@ function ispec {
 function test {
   echo -e "Building keymetrics/pm2:$1"
   # Set the tag name into the Dockerfile
-  sed -i '' "s/{{tag}}/$1/g" 'Dockerfile'
+  sed -i.bk "s/{{tag}}/$1/g" 'Dockerfile' && rm 'Dockerfile.bk'
 
   # Build the image
   IID=$(docker build -q -t example-app .)
@@ -52,11 +52,12 @@ function test {
   docker rmi ${IID} >> /dev/null
 
   # Reset the tag name into the Dockerfile
-  sed -i '' "s/$1/{{tag}}/g" 'Dockerfile'
+  sed -i.bk "s/$1/{{tag}}/g" 'Dockerfile' && rm 'Dockerfile.bk'
 }
 
 # Test all the tags that we ship on Docker Hub
 tags=(${TEST_TAGS:-'latest-alpine' 'latest-stretch' 'latest-jessie' 'latest-slim' 'latest-wheezy'})
+
 for tag in "${tags[@]}"
 do
   test ${tag}
