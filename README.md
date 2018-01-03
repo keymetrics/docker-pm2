@@ -71,7 +71,7 @@ Create a new file called `pm2.json` with the following content:
   "instances": "2",
   "env": {
     "NODE_ENV": "development"
-  },
+  },
   "env_production" : {
     "NODE_ENV": "production"
   }
@@ -100,9 +100,9 @@ RUN npm install --production
 # Show current folder structure in logs
 RUN ls -al -R
 
-CMD [ "pm2-docker", "start", "pm2.json" ]
+CMD [ "pm2-runtime", "start", "pm2.json" ]
 ```
-See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-docker` command.
+See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for more info about the `pm2-runtime` command.
 <br>All options available are listed [here](http://pm2.keymetrics.io/docs/usage/application-declaration/#attributes-available).
 
 ### Build and Run your image
@@ -136,7 +136,7 @@ RUN pm2 install pm2-server-monit
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
 
-To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXXX` and –secret `YYYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
+To enable Keymetrics monitoring with pm2-runtime, you can whether use the CLI option –public `XXXX` and –secret `YYYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
 
 From your Node.js app project folder launch those commands:
 
@@ -168,11 +168,11 @@ By default PM2 will wait `1600ms` before sending a final `SIGKILL` signal. You c
 The `--web [port]` option allows to expose all vital signs (docker instance + application) via a JSON API.
 
 ```
-CMD ["pm2-docker", "start", "pm2.json", "--web"]
+CMD ["pm2-runtime", "start", "pm2.json", "--web"]
 ```
 or
 ```
-CMD ["pm2-docker", "start", "pm2.json", "--web", "port"]
+CMD ["pm2-runtime", "start", "pm2.json", "--web", "port"]
 ```
 
 ## Useful commands
