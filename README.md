@@ -84,7 +84,7 @@ See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declarat
 Create a new file called `Dockerfile` with the following content:
 
 ```dockerfile
-FROM keymetrics/pm2:latest
+FROM keymetrics/pm2:latest-alpine
 
 # Bundle APP files
 COPY src src/
