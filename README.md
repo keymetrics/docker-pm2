@@ -52,7 +52,7 @@ Create a new file called `pm2.json` with the following content:
   }]
 }
 ```
-> You can choose the name of the `ecosystem` file arbitrarly, but we will assume you called it `pm2.json` in the following steps.
+> You can choose the name of the `ecosystem` file arbitrarily, but we will assume you called it `pm2.json` in the following steps.
 
 See the [documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/#generate-configuration) for more information about how to configure the `ecosystem` file.
 
@@ -90,7 +90,7 @@ $ docker run your-app-name
 
 ## Custom configurations
 
-### Enable Git auto-pull
+### Enable git auto-pull
 
 If you want to [Automatically synchronize your application with git](https://github.com/pm2-hive/pm2-auto-pull) add this into your Dockerfile:
 
@@ -99,44 +99,34 @@ RUN pm2 install pm2-auto-pull
 ```
 *Make sure the .git is present in your application source folder.*
 
-## Logging Format option
+### Enable Monitor server
 
-If you want to change the log output format you can select one of this options:
-
-- **--json** to output logs in JSON
-- **--format** to output logs in key=val style
-- **--raw** to display logs in raw format
-
-To use one of this flag, you just need to pass them to pm2-docker:
+If you want to [Automatically monitor vital signs of your server](https://github.com/keymetrics/pm2-server-monit) add this into your Dockerfile:
 
 ```
-CMD ["pm2-docker", "start", "--json", "pm2.json"]
+RUN pm2 install pm2-server-monit
 ```
 
-See the [documentation](http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/#usage) for all available configuration.
-
-## Use Keymetrics.io
+### Use Keymetrics.io dashboard
 
 [Keymetrics.io](https://keymetrics.io/) is a monitoring service built on top of PM2 that allows to monitor and manage applications easily (logs, restart, exceptions monitoring, etc...). Once you created a Bucket on Keymetrics you will get a public and a secret key.
 
-To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXX` and –secret `YYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
+To enable Keymetrics monitoring with pm2-docker, you can whether use the CLI option –public `XXXX` and –secret `YYYY` or you can pass the environment variables `KEYMETRICS_PUBLIC` and `KEYMETRICS_SECRET`.
 
-Example with the CLI options via a Dockerfile:
+From your Node.js app project folder launch those commands:
 
-```
-CMD ["pm2-docker", "start", "--public", "XXX", "--secret", "YYY", "pm2.json"]
-```
-
-Or via environment variables:
-
-```
-ENV KEYMETRICS_PUBLIC=XXX
-ENV KEYMETRICS_SECRET=YYY
+```bash
+$ docker build -t your-app-name .
+$ docker run -e KEYMETRICS_PUBLIC=XXXX -e KEYMETRICS_SECRET=YYYY your-app-name
 ```
 
-## Enabling Graceful Shutdown
+Make sure that the ports 80 (TCP outbound), 443 (HTTPS outbound) and 43554 (TCP outbound) are allowed on your firewall.
 
-When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successfull graceful shutdown.
+See the [troubleshooting](http://docs.keymetrics.io/docs/pages/faq-troubleshooting/#troubleshooting-for-keymetrics-pm2) in case you encounter any problem.
+
+### Enabling Graceful Shutdown
+
+When the Container receives a shutdown signal, PM2 forwards this signal to your application allowing to close all the database connections, wait that all queries have been processed or that any other final processing has been completed before a successful graceful shutdown.
 
 Catching a shutdown signal is straightforward. You need to add a listener in your Node.js applications and execute anything needed before stopping the app:
 
@@ -149,7 +139,7 @@ process.on('SIGINT', function() {
 ```
 By default PM2 will wait `1600ms` before sending a final `SIGKILL` signal. You can modify this delay by setting the `kill_timeout` option inside your application configuration file.
 
-## Expose health endpoint
+### Expose health endpoint
 The `--web [port]` option allows to expose all vital signs (docker instance + application) via a JSON API.
 
 ```
