@@ -66,13 +66,15 @@ Create a new file called `pm2.json` with the following content:
 
 ```json
 {
-  "apps": [{
-    "name": "your-app-name",
-    "script": "src/app.js",
-    "env": {
-      "production": true
-    }
-  }]
+  "name": "your-app-name",
+  "script": "src/app.js",
+  "instances": "2",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "env_production" : {
+    "NODE_ENV": "production"
+  }
 }
 ```
 > You can choose the name of the `ecosystem` file arbitrarily, but we will assume you called it `pm2.json` in the following steps.
