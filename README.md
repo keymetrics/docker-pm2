@@ -12,17 +12,40 @@ The goal of this image is to wrap your applications into a proper Node.js produc
 
 Further than that, using PM2 as a layer between the container and the application brings PM2 features like [application declaration file](http://pm2.keymetrics.io/docs/usage/application-declaration/), [customizable log system](http://pm2.keymetrics.io/docs/usage/log-management/), [source map support](http://pm2.keymetrics.io/docs/usage/source-map-support/) and other great features to manage your Node.js application in production environment.
 
-#### Tags available:
+## Tags available
 
-- keymetrics/pm2:`latest` with `node:alpine`
-- keymetrics/pm2:`8` with `node:8-alpine`
-- keymetrics/pm2:`7` with `node:7-alpine`
-- keymetrics/pm2:`6` with `node:6-alpine`
-- keymetrics/pm2:`4` with `node:4-alpine`
-- keymetrics/pm2:`next` with `node:alpine` and `pm2@next`
+**Image Name** | **Operating system** | **Dockerfile**
+---|---|---
+keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
+keymetrics/pm2:`8-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[8-alpine](tags/8/alpine/Dockerfile)
+keymetrics/pm2:`6-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[6-alpine](tags/6/alpine/Dockerfile)
+keymetrics/pm2:`4-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[4-alpine](tags/4/alpine/Dockerfile)
+**Image Name** | **Operating system** | **Dockerfile**
+keymetrics/pm2:`latest-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[latest-stretch](tags/latest/debian/stretch/Dockerfile)
+keymetrics/pm2:`8-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[8-stretch](tags/8/debian/stretch/Dockerfile)
+keymetrics/pm2:`6-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[6-stretch](tags/6/debian/stretch/Dockerfile)
+keymetrics/pm2:`4-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[4-stretch](tags/4/debian/stretch/Dockerfile)
+**Image Name** | **Operating system** | **Dockerfile**
+keymetrics/pm2:`latest-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-jessie](tags/latest/debian/jessie/Dockerfile)
+keymetrics/pm2:`8-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-jessie](tags/8/debian/jessie/Dockerfile)
+keymetrics/pm2:`6-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-jessie](tags/6/debian/jessie/Dockerfile)
+keymetrics/pm2:`4-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-jessie](tags/4/debian/jessie/Dockerfile)
+**Image Name** | **Operating system** | **Dockerfile**
+keymetrics/pm2:`latest-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-slim](tags/latest/debian/slim/Dockerfile)
+keymetrics/pm2:`8-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-slim](tags/8/debian/slim/Dockerfile)
+keymetrics/pm2:`6-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-slim](tags/6/debian/slim/Dockerfile)
+keymetrics/pm2:`4-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-slim](tags/4/debian/slim/Dockerfile)
+**Image Name** | **Operating system** | **Dockerfile**
+keymetrics/pm2:`latest-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[latest-wheezy](tags/latest/debian/wheezy/Dockerfile)
+keymetrics/pm2:`8-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[8-wheezy](tags/8/debian/wheezy/Dockerfile)
+keymetrics/pm2:`6-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[6-wheezy](tags/6/debian/wheezy/Dockerfile)
+keymetrics/pm2:`4-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[4-wheezy](tags/4/debian/wheezy/Dockerfile)
 
-These images are automatically built from the [Docker Hub](https://hub.docker.com/r/keymetrics/pm2/) based on this Github repository folder arrangement.
+You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
+> The build process of these images is automatically triggered each time [NodeJS's Docker images](https://hub.docker.com/r/library/node/tags/) are built.  
+The build process of these images is automatically triggered each time [Docker PM2's GitHub repo](https://github.com/keymetrics/docker-pm2) master branch is pushed.  
+The build process of these images is automatically triggered each time [PM2's GitHub repo](https://github.com/Unitech/pm2) master branch is pushed.  
 
 ## Usage
 
