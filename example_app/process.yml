@@ -1,5 +1,0 @@
-apps:
-  - script   : api.js
-    instances: 4
-  - script   : worker.js
-    max_memory_restart: 200M

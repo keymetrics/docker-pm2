@@ -1,7 +1,8 @@
 sudo: required
-
+language: node_js
+node_js:
+  - "node"
 services:
   - docker
-
 script:
-  - bash test/test.sh
+  - cd example-app && npm install && npm test && cd ..
