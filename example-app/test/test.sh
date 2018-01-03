@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function fail {
-  echo -e "\033[31m  ✘ $1\033[0m"
+  echo -e "\033[31m  ✘ \033[0m$1"
 }
 
 function success {
-  echo -e "\033[32m ✔ $1\033[0m"
+  echo -e "\033[32m ✔ \033[0m$1"
 }
 
 function spec {
@@ -24,27 +24,40 @@ function ispec {
   fi
 }
 
-# Build the image
-IID=$(docker build -q -t example-app .)
-echo "Created: ${IID}"
-# Create and Start the container
-CID=$(docker run -d -p 80:3000 example-app)
-echo "${CID}"
-echo "Tagged: example-app:latest"
+function test {
+  echo -e "Building keymetrics/pm2:$1"
+  # Set the tag name into the Dockerfile
+  sed -i '' "s/{{tag}}/$1/g" 'Dockerfile'
 
-sleep 5
+  # Build the image
+  IID=$(docker build -q -t example-app .)
+  # Create and Start the container
+  CID=$(docker run -d -p 80:3000 example-app)
 
-# Starting tests
-echo -e "\nStarting tests"
-EXPECTED="hey"
-ACTUAL=$(curl -s http://localhost:80/)
-spec $ACTUAL $EXPECTED "Should have got data from running app in docker container"
-echo -e "Tests executed\n"
-# Tests executed
+  sleep 5
 
-# Stop the container
-docker stop ${CID}
-# Delete the container
-docker rm ${CID}
-# Delete the image
-docker rmi ${IID}
+  # Starting tests
+  echo -e "Testing keymetrics/pm2:$1"
+  EXPECTED="hey"
+  ACTUAL=$(curl -s http://localhost:80/)
+  spec ${ACTUAL} ${EXPECTED} "Should have got data from running app in docker container"
+  # Tests executed
+
+  echo -e "Cleaning keymetrics/pm2:$1"
+  # Stop the container
+  docker stop ${CID} >> /dev/null
+  # Delete the container
+  docker rm ${CID} >> /dev/null
+  # Delete the image
+  docker rmi ${IID} >> /dev/null
+
+  # Reset the tag name into the Dockerfile
+  sed -i '' "s/$1/{{tag}}/g" 'Dockerfile'
+}
+
+# Test all the tags that we ship on Docker Hub
+tags=(${TEST_TAGS:-'latest-alpine' 'latest-stretch' 'latest-jessie' 'latest-slim' 'latest-wheezy'})
+for tag in "${tags[@]}"
+do
+  test ${tag}
+done

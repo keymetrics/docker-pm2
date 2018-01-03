@@ -4,5 +4,11 @@ node_js:
   - "node"
 services:
   - docker
+env:
+  TEST_TAGS='latest-alpine'
+  TEST_TAGS='latest-stretch'
+  TEST_TAGS='latest-jessie'
+  TEST_TAGS='latest-slim'
+  TEST_TAGS='latest-wheezy'
 script:
   - cd example-app && npm install && npm test && cd ..
