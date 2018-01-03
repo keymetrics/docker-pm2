@@ -11,16 +11,11 @@ tpath='tags'
 url='https://github.com/keymetrics/docker-pm2'
 self="$(basename "${BASH_SOURCE[0]}")"
 
-declare -A versions paths
+declare -A versions
 versions['latest']='alpine|stretch|jessie|slim|wheezy'
 versions['8']='alpine|stretch|jessie|slim|wheezy'
 versions['6']='alpine|stretch|jessie|slim|wheezy'
 versions['4']='alpine|stretch|jessie|slim|wheezy'
-paths['alpine']='alpine'
-paths['stretch']='debian/stretch'
-paths['jessie']='debian/jessie'
-paths['slim']='debian/slim'
-paths['wheezy']='debian/wheezy'
 
 echo "# This file is generated via $url/blob/$(fileCommit "$self")/$self"
 echo
@@ -30,16 +25,16 @@ echo
 
 for version in "${!versions[@]}"
 do
-  
+
   variants=(${versions[$version]//|/ })
   for i in "${!variants[@]}"
   do
     variant=${variants[i]}
 
-    commit="$(fileCommit "$tpath/$version/${paths[$variant]}")"
+    commit="$(fileCommit "$tpath/$version/$variant")"
     echo "Tags: $version"-"$variant"
     echo "GitCommit: $commit"
-    echo "Directory: $tpath/$version/${paths[$variant]}"
+    echo "Directory: $tpath/$version/$variant"
     echo
 
   done

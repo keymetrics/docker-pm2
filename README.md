@@ -21,25 +21,25 @@ keymetrics/pm2:`8-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[8-alpine
 keymetrics/pm2:`6-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[6-alpine](tags/6/alpine/Dockerfile)
 keymetrics/pm2:`4-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[4-alpine](tags/4/alpine/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
-keymetrics/pm2:`latest-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[latest-stretch](tags/latest/debian/stretch/Dockerfile)
-keymetrics/pm2:`8-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[8-stretch](tags/8/debian/stretch/Dockerfile)
-keymetrics/pm2:`6-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[6-stretch](tags/6/debian/stretch/Dockerfile)
-keymetrics/pm2:`4-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[4-stretch](tags/4/debian/stretch/Dockerfile)
+keymetrics/pm2:`latest-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[latest-stretch](tags/latest/stretch/Dockerfile)
+keymetrics/pm2:`8-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[8-stretch](tags/8/stretch/Dockerfile)
+keymetrics/pm2:`6-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[6-stretch](tags/6/stretch/Dockerfile)
+keymetrics/pm2:`4-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[4-stretch](tags/4/stretch/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
-keymetrics/pm2:`latest-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-jessie](tags/latest/debian/jessie/Dockerfile)
-keymetrics/pm2:`8-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-jessie](tags/8/debian/jessie/Dockerfile)
-keymetrics/pm2:`6-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-jessie](tags/6/debian/jessie/Dockerfile)
-keymetrics/pm2:`4-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-jessie](tags/4/debian/jessie/Dockerfile)
+keymetrics/pm2:`latest-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-jessie](tags/latest/jessie/Dockerfile)
+keymetrics/pm2:`8-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-jessie](tags/8/jessie/Dockerfile)
+keymetrics/pm2:`6-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-jessie](tags/6/jessie/Dockerfile)
+keymetrics/pm2:`4-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-jessie](tags/4/jessie/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
-keymetrics/pm2:`latest-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-slim](tags/latest/debian/slim/Dockerfile)
-keymetrics/pm2:`8-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-slim](tags/8/debian/slim/Dockerfile)
-keymetrics/pm2:`6-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-slim](tags/6/debian/slim/Dockerfile)
-keymetrics/pm2:`4-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-slim](tags/4/debian/slim/Dockerfile)
+keymetrics/pm2:`latest-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-slim](tags/latest/slim/Dockerfile)
+keymetrics/pm2:`8-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-slim](tags/8/slim/Dockerfile)
+keymetrics/pm2:`6-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[6-slim](tags/6/slim/Dockerfile)
+keymetrics/pm2:`4-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-slim](tags/4/slim/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
-keymetrics/pm2:`latest-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[latest-wheezy](tags/latest/debian/wheezy/Dockerfile)
-keymetrics/pm2:`8-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[8-wheezy](tags/8/debian/wheezy/Dockerfile)
-keymetrics/pm2:`6-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[6-wheezy](tags/6/debian/wheezy/Dockerfile)
-keymetrics/pm2:`4-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[4-wheezy](tags/4/debian/wheezy/Dockerfile)
+keymetrics/pm2:`latest-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[latest-wheezy](tags/latest/wheezy/Dockerfile)
+keymetrics/pm2:`8-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[8-wheezy](tags/8/wheezy/Dockerfile)
+keymetrics/pm2:`6-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[6-wheezy](tags/6/wheezy/Dockerfile)
+keymetrics/pm2:`4-wheezy`|[Debian Wheezy](https://wiki.debian.org/DebianWheezy)|[4-wheezy](tags/4/wheezy/Dockerfile)
 
 You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
