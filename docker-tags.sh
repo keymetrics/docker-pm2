@@ -10,6 +10,7 @@ function fileCommit() {
 tpath='tags'
 url='https://github.com/keymetrics/docker-pm2'
 self="$(basename "${BASH_SOURCE[0]}")"
+date=$(date +'%Y-%m-%d %H:%M:%S')
 
 declare -A versions
 versions['latest']='alpine|stretch|jessie|slim|wheezy'
@@ -18,6 +19,7 @@ versions['6']='alpine|stretch|jessie|slim|wheezy'
 versions['4']='alpine|stretch|jessie|slim|wheezy'
 
 echo "# This file is generated via $url/blob/$(fileCommit "$self")/$self"
+echo "# $date"
 echo
 echo "Maintainers: Keymetrics.io <$url> (@keymetrics)"
 echo "GitRepo: $url.git"
