@@ -14,6 +14,7 @@ date=$(date +'%Y-%m-%d %H:%M:%S')
 
 declare -A versions
 versions['latest']='alpine|stretch|jessie|slim|wheezy'
+versions['10']='alpine|stretch|jessie|slim|wheezy'
 versions['8']='alpine|stretch|jessie|slim|wheezy'
 versions['6']='alpine|stretch|jessie|slim|wheezy'
 versions['4']='alpine|stretch|jessie|slim|wheezy'
