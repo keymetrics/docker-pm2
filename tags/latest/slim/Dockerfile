@@ -1,6 +1,9 @@
 FROM node:slim
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
+# Add the missing `ps` that `slim` doesn't provide
+RUN apt install procps
+
 # Install pm2
 RUN npm install pm2 -g
 
