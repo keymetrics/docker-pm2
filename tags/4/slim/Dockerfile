@@ -2,7 +2,7 @@ FROM node:4-slim
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2
-RUN npm install pm2 -g
+RUN npm install pm2@3 -g
 
 # Expose ports needed to use Keymetrics.io
 EXPOSE 80 443 43554
