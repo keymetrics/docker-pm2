@@ -17,6 +17,7 @@ Further than that, using PM2 as a layer between the container and the applicatio
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
+keymetrics/pm2:`14-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[14-alpine](tags/13/alpine/Dockerfile)
 keymetrics/pm2:`12-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[12-alpine](tags/12/alpine/Dockerfile)
 keymetrics/pm2:`10-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[10-alpine](tags/10/alpine/Dockerfile)
 keymetrics/pm2:`8-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[8-alpine](tags/8/alpine/Dockerfile)
@@ -24,6 +25,7 @@ keymetrics/pm2:`6-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[6-alpine
 keymetrics/pm2:`4-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[4-alpine](tags/4/alpine/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
 keymetrics/pm2:`latest-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[latest-stretch](tags/latest/stretch/Dockerfile)
+keymetrics/pm2:`14-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[14-stretch](tags/14/stretch/Dockerfile)
 keymetrics/pm2:`12-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[12-stretch](tags/12/stretch/Dockerfile)
 keymetrics/pm2:`10-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[10-stretch](tags/10/stretch/Dockerfile)
 keymetrics/pm2:`8-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[8-stretch](tags/8/stretch/Dockerfile)
@@ -31,6 +33,7 @@ keymetrics/pm2:`6-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStret
 keymetrics/pm2:`4-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[4-stretch](tags/4/stretch/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
 keymetrics/pm2:`latest-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-jessie](tags/latest/jessie/Dockerfile)
+keymetrics/pm2:`14-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[14-jessie](tags/14/jessie/Dockerfile)
 keymetrics/pm2:`12-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[12-jessie](tags/12/jessie/Dockerfile)
 keymetrics/pm2:`10-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[10-jessie](tags/10/jessie/Dockerfile)
 keymetrics/pm2:`8-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[8-jessie](tags/8/jessie/Dockerfile)
@@ -38,6 +41,7 @@ keymetrics/pm2:`6-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)
 keymetrics/pm2:`4-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[4-jessie](tags/4/jessie/Dockerfile)
 **Image Name** | **Operating system** | **Dockerfile**
 keymetrics/pm2:`latest-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie) (minimal packages)|[latest-slim](tags/latest/slim/Dockerfile)
+keymetrics/pm2:`14-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie) (minimal packages)|[14-slim](tags/14/slim/Dockerfile)
 keymetrics/pm2:`12-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie) (minimal packages)|[12-slim](tags/12/slim/Dockerfile)
 keymetrics/pm2:`10-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie) (minimal packages)|[10-slim](tags/10/slim/Dockerfile)
 keymetrics/pm2:`8-slim`|[Debian Jessie](https://wiki.debian.org/DebianJessie) (minimal packages)|[8-slim](tags/8/slim/Dockerfile)
