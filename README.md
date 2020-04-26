@@ -17,7 +17,7 @@ Further than that, using PM2 as a layer between the container and the applicatio
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
-keymetrics/pm2:`14-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[14-alpine](tags/13/alpine/Dockerfile)
+keymetrics/pm2:`14-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[14-alpine](tags/14/alpine/Dockerfile)
 keymetrics/pm2:`12-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[12-alpine](tags/12/alpine/Dockerfile)
 keymetrics/pm2:`10-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[10-alpine](tags/10/alpine/Dockerfile)
 keymetrics/pm2:`8-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[8-alpine](tags/8/alpine/Dockerfile)
