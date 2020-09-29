@@ -212,6 +212,4 @@ See also the list of [contributors](https://github.com/keymetrics/docker-pm2/con
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-License information for
-the software contained in this image can be found [here](https://github.com/Unitech/pm2/blob/master/GNU-AGPL-3.0.txt) (pm2) and [here](https://github.com/nodejs/node/blob/master/LICENSE) (node).
+License information for the software contained in this image can be found [here](https://github.com/Unitech/pm2/blob/master/GNU-AGPL-3.0.txt) (pm2) and [here](https://github.com/nodejs/node/blob/master/LICENSE) (node).
