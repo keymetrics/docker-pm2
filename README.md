@@ -207,7 +207,6 @@ The documentation can be found [here](http://pm2.keymetrics.io/docs/usage/docker
 
 See also the list of [contributors](https://github.com/keymetrics/docker-pm2/contributors) who participated in this project.
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
