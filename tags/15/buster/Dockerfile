@@ -1,8 +1,8 @@
-FROM node:6-stretch
+FROM node:15-buster
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2
-RUN npm install pm2@3 -g
+RUN npm install pm2 -g
 
 # Expose ports needed to use Keymetrics.io
 EXPOSE 80 443 43554
