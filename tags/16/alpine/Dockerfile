@@ -1,4 +1,4 @@
-FROM node:10-wheezy
+FROM node:16-alpine
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2

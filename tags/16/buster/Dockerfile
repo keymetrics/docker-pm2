@@ -1,4 +1,4 @@
-FROM node:10-slim
+FROM node:16-buster
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2

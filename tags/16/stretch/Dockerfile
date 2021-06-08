@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:16-stretch
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2
