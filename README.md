@@ -1,7 +1,5 @@
 # PM2
 
-[![Docker Hub](http://dockeri.co/image/keymetrics/pm2)](https://hub.docker.com/r/keymetrics/pm2/)
-
 Production ready nodeJS Docker image including the [PM2 runtime](http://pm2.keymetrics.io/).
 
 The goal of this image is to wrap your applications into a proper Node.js production environment. It solves major issues when running Node.js applications inside a container like:
