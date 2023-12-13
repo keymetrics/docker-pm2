@@ -9,7 +9,7 @@ function success {
 }
 
 function spec {
-  if [ $1 == $2 ]; then
+  if [ "$1" == "$2" ]; then
     success "$3"
   else
     fail "$3"
@@ -17,7 +17,7 @@ function spec {
 }
 
 function ispec {
-  if [ $1 != $2 ]; then
+  if [ "$1" != "$2" ]; then
     success "$3"
   else
     fail "$3"
