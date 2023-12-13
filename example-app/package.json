@@ -4,13 +4,14 @@
   "description": "Docker PM2 example app",
   "main": "index.js",
   "private": "true",
+  "type": "module",
   "scripts": {
-    "test": "xo&& bash ./test/test.sh"
+    "test": "xo && bash ./test/test.sh"
   },
   "author": "Keymetrics <contact@keymetrics.io>",
   "license": "MIT",
   "devDependencies": {
-    "xo": "^0.18.2"
+    "xo": "^0.56.0"
   },
   "xo": {
     "space": true
