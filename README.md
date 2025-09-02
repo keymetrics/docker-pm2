@@ -15,58 +15,41 @@ Further than that, using PM2 as a layer between the container and the applicatio
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
-keymetrics/pm2:`18-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[15-alpine](tags/16/alpine/Dockerfile)
-keymetrics/pm2:`16-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[15-alpine](tags/16/alpine/Dockerfile)
-keymetrics/pm2:`15-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[15-alpine](tags/15/alpine/Dockerfile)
-keymetrics/pm2:`14-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[14-alpine](tags/14/alpine/Dockerfile)
-keymetrics/pm2:`12-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[12-alpine](tags/12/alpine/Dockerfile)
-keymetrics/pm2:`10-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[10-alpine](tags/10/alpine/Dockerfile)
+keymetrics/pm2:`20-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[20-alpine](tags/20/alpine/Dockerfile)
+keymetrics/pm2:`18-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[18-alpine](tags/18/alpine/Dockerfile)
+
+**Image Name** | **Operating system** | **Dockerfile**
+---|---|---
+keymetrics/pm2:`latest-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[latest-bookworm](tags/latest/bookworm/Dockerfile)
+keymetrics/pm2:`20-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[20-bookworm](tags/20/bookworm/Dockerfile)
+keymetrics/pm2:`18-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[18-bookworm](tags/18/bookworm/Dockerfile)
+
+**Image Name** | **Operating system** | **Dockerfile**
+---|---|---
+keymetrics/pm2:`latest-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[latest-bullseye](tags/latest/bullseye/Dockerfile)
+keymetrics/pm2:`20-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[20-bullseye](tags/20/bullseye/Dockerfile)
+keymetrics/pm2:`18-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[18-bullseye](tags/18/bullseye/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[latest-buster](tags/latest/buster/Dockerfile)
+keymetrics/pm2:`20-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[20-buster](tags/20/buster/Dockerfile)
 keymetrics/pm2:`18-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[18-buster](tags/18/buster/Dockerfile)
-keymetrics/pm2:`16-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[16-buster](tags/16/buster/Dockerfile)
-keymetrics/pm2:`15-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[15-buster](tags/15/buster/Dockerfile)
-keymetrics/pm2:`14-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[14-buster](tags/14/buster/Dockerfile)
-keymetrics/pm2:`12-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[12-buster](tags/12/buster/Dockerfile)
-keymetrics/pm2:`10-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[10-buster](tags/10/buster/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
-keymetrics/pm2:`latest-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[latest-stretch](tags/latest/stretch/Dockerfile)
-keymetrics/pm2:`18-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[18-stretch](tags/18/stretch/Dockerfile)
-keymetrics/pm2:`16-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[16-stretch](tags/16/stretch/Dockerfile)
-keymetrics/pm2:`15-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[15-stretch](tags/15/stretch/Dockerfile)
-keymetrics/pm2:`14-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[14-stretch](tags/14/stretch/Dockerfile)
-keymetrics/pm2:`12-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[12-stretch](tags/12/stretch/Dockerfile)
-keymetrics/pm2:`10-stretch`|[Debian Stretch](https://wiki.debian.org/DebianStretch)|[10-stretch](tags/10/stretch/Dockerfile)
+keymetrics/pm2:`latest-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[latest-slim](tags/latest/slim/Dockerfile)
+keymetrics/pm2:`20-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[20-slim](tags/20/slim/Dockerfile)
+keymetrics/pm2:`18-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[18-slim](tags/18/slim/Dockerfile)
 
-**Image Name** | **Operating system** | **Dockerfile**
----|---|---
-keymetrics/pm2:`latest-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[latest-jessie](tags/latest/jessie/Dockerfile)
-keymetrics/pm2:`18-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[18-jessie](tags/18/jessie/Dockerfile)
-keymetrics/pm2:`16-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[16-jessie](tags/16/jessie/Dockerfile)
-keymetrics/pm2:`15-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[15-jessie](tags/15/jessie/Dockerfile)
-keymetrics/pm2:`14-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[14-jessie](tags/14/jessie/Dockerfile)
-keymetrics/pm2:`12-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[12-jessie](tags/12/jessie/Dockerfile)
-keymetrics/pm2:`10-jessie`|[Debian Jessie](https://wiki.debian.org/DebianJessie)|[10-jessie](tags/10/jessie/Dockerfile)
-
-**Image Name** | **Operating system** | **Dockerfile**
----|---|---
-keymetrics/pm2:`latest-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[latest-slim](tags/latest/slim/Dockerfile)
-keymetrics/pm2:`18-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[18-slim](tags/18/slim/Dockerfile)
-keymetrics/pm2:`16-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[16-slim](tags/16/slim/Dockerfile)
-keymetrics/pm2:`15-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[15-slim](tags/15/slim/Dockerfile)
-keymetrics/pm2:`14-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[14-slim](tags/14/slim/Dockerfile)
-keymetrics/pm2:`12-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[12-slim](tags/12/slim/Dockerfile)
-keymetrics/pm2:`10-slim`|[Debian Stretch](https://wiki.debian.org/DebianStretch) (minimal packages)|[10-slim](tags/10/slim/Dockerfile)
 
 You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
 > The build process of these images is automatically triggered each time [NodeJS's Docker images](https://hub.docker.com/r/library/node/tags/) are built.
 The build process of these images is automatically triggered each time [Docker PM2's GitHub repo](https://github.com/keymetrics/docker-pm2) master branch is pushed.
 The build process of these images is automatically triggered each time [PM2's GitHub repo](https://github.com/Unitech/pm2) master branch is pushed.
+
+> If you absolutely need to use an older NodeJS version, check the [docker-pm2](https://hub.docker.com/r/keymetrics/pm2/tags) Docker hub page for available images. _(Not recommended)_
 
 ## Usage
 

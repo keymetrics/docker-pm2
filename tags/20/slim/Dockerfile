@@ -1,4 +1,4 @@
-FROM node:18-bookworm-slim
+FROM node:20-bookworm-slim
 LABEL maintainer="Keymetrics <contact@keymetrics.io>"
 
 # Install pm2

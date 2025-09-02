@@ -13,14 +13,9 @@ self="$(basename "${BASH_SOURCE[0]}")"
 date=$(date +'%Y-%m-%d %H:%M:%S')
 
 declare -A versions
-versions['latest']='alpine|stretch|buster|jessie|slim'
-versions['14']='alpine|stretch|buster|jessie|slim'
-versions['13']='alpine|stretch|buster|jessie|slim'
-versions['12']='alpine|stretch|buster|jessie|slim'
-versions['10']='alpine|stretch|buster|jessie|slim|wheezy'
-versions['8']='alpine|stretch|buster|jessie|slim|wheezy'
-versions['6']='alpine|stretch|jessie|slim|wheezy'
-versions['4']='alpine|stretch|jessie|slim|wheezy'
+versions['latest']='alpine|bookworm|bullseye|buster|slim'
+versions['20']='alpine|bookworm|bullseye|buster|slim'
+versions['18']='alpine|bookworm|bullseye|buster|slim'
 
 echo "# This file is generated via $url/blob/$(fileCommit "$self")/$self"
 echo "# $date"
