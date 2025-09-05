@@ -20,8 +20,8 @@ REGISTRY="keymetrics/pm2"
 # Versions and variants
 declare -A versions
 versions['latest']='alpine|bookworm|bullseye|buster|slim'
-versions['24']='alpine|bookworm|bullseye|buster|slim'
-versions['22']='alpine|bookworm|bullseye|buster|slim'
+versions['24']='alpine|bookworm|bullseye|slim'
+versions['22']='alpine|bookworm|bullseye|slim'
 versions['20']='alpine|bookworm|bullseye|buster|slim'
 versions['18']='alpine|bookworm|bullseye|buster|slim'
 

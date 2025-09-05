@@ -39,8 +39,6 @@ keymetrics/pm2:`18-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBu
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[latest-buster](tags/latest/buster/Dockerfile)
-keymetrics/pm2:`24-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[24-buster](tags/24/buster/Dockerfile)
-keymetrics/pm2:`22-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[22-buster](tags/22/buster/Dockerfile)
 keymetrics/pm2:`20-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[20-buster](tags/20/buster/Dockerfile)
 keymetrics/pm2:`18-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[18-buster](tags/18/buster/Dockerfile)
 
