@@ -15,30 +15,40 @@ Further than that, using PM2 as a layer between the container and the applicatio
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
+keymetrics/pm2:`24-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[24-alpine](tags/24/alpine/Dockerfile)
+keymetrics/pm2:`22-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[22-alpine](tags/22/alpine/Dockerfile)
 keymetrics/pm2:`20-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[20-alpine](tags/20/alpine/Dockerfile)
 keymetrics/pm2:`18-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[18-alpine](tags/18/alpine/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[latest-bookworm](tags/latest/bookworm/Dockerfile)
+keymetrics/pm2:`24-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[24-bookworm](tags/24/bookworm/Dockerfile)
+keymetrics/pm2:`22-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[22-bookworm](tags/22/bookworm/Dockerfile)
 keymetrics/pm2:`20-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[20-bookworm](tags/20/bookworm/Dockerfile)
 keymetrics/pm2:`18-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[18-bookworm](tags/18/bookworm/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[latest-bullseye](tags/latest/bullseye/Dockerfile)
+keymetrics/pm2:`24-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[24-bullseye](tags/24/bullseye/Dockerfile)
+keymetrics/pm2:`22-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[22-bullseye](tags/22/bullseye/Dockerfile)
 keymetrics/pm2:`20-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[20-bullseye](tags/20/bullseye/Dockerfile)
 keymetrics/pm2:`18-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[18-bullseye](tags/18/bullseye/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[latest-buster](tags/latest/buster/Dockerfile)
+keymetrics/pm2:`24-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[24-buster](tags/24/buster/Dockerfile)
+keymetrics/pm2:`22-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[22-buster](tags/22/buster/Dockerfile)
 keymetrics/pm2:`20-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[20-buster](tags/20/buster/Dockerfile)
 keymetrics/pm2:`18-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[18-buster](tags/18/buster/Dockerfile)
 
 **Image Name** | **Operating system** | **Dockerfile**
 ---|---|---
 keymetrics/pm2:`latest-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[latest-slim](tags/latest/slim/Dockerfile)
+keymetrics/pm2:`24-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[24-slim](tags/24/slim/Dockerfile)
+keymetrics/pm2:`22-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[22-slim](tags/22/slim/Dockerfile)
 keymetrics/pm2:`20-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[20-slim](tags/20/slim/Dockerfile)
 keymetrics/pm2:`18-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[18-slim](tags/18/slim/Dockerfile)
 
