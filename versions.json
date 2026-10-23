@@ -1,6 +1,11 @@
 {
   "node": ["22", "24", "26", "latest"],
   "variants": ["alpine", "bookworm", "trixie", "slim"],
+  "hardened": ["22", "24", "26"],
+  "bun": {
+    "bun": "1",
+    "bun-alpine": "1-alpine"
+  },
   "aliases": {
     "latest-alpine": ["latest"]
   }

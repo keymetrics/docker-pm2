@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Build, test and push all PM2 Docker images from a workstation.
-# CI does the same through .github/workflows/docker-publish.yml; both read versions.json.
+# CI does the same through .github/workflows/docker-publish.yml; both expand versions.json with images.jq.
+# Hardened images need `docker login dhi.io` first.
 #
 # Usage: ./build-and-push.sh            build, test and push everything
 #        ./build-and-push.sh --no-push  build and test only
@@ -40,27 +41,23 @@ PM2_VERSION=$(npm view pm2 version)
 log_info "PM2 version: ${PM2_VERSION}"
 
 build_test_push() {
-  local version=$1 variant=$2
-  local tag="${version}-${variant}"
-  local node_tag="$tag"
-  [ "$version" = "latest" ] && node_tag="$variant"
+  local tag=$1 dockerfile=$2 args=$3 aliases=$4
+  local build_args=(--build-arg "$args" --build-arg PM2_VERSION="$PM2_VERSION")
 
   local tags=(-t "${REGISTRY}:${tag}")
-  while read -r alias; do
-    [ -n "$alias" ] && tags+=(-t "${REGISTRY}:${alias}")
-  done < <(jq -r --arg t "$tag" '.aliases[$t] // [] | .[]' versions.json)
+  for alias in $aliases; do
+    tags+=(-t "${REGISTRY}:${alias}")
+  done
 
-  log_info "Building ${REGISTRY}:${tag} (node:${node_tag})"
-  docker buildx build --pull --load \
-    --build-arg NODE_TAG="$node_tag" --build-arg PM2_VERSION="$PM2_VERSION" \
+  log_info "Building ${REGISTRY}:${tag} (${dockerfile}, ${args})"
+  docker buildx build --pull --load -f "$dockerfile" "${build_args[@]}" \
     -t "pm2-test:${tag}" . || return 1
 
   bash test/test-image.sh "pm2-test:${tag}" "$PM2_VERSION" || return 1
 
   if [ "$PUSH" = 1 ]; then
-    log_info "Pushing ${REGISTRY}:${tag} and aliases"
-    docker buildx build --pull --push --platform "$PLATFORMS" \
-      --build-arg NODE_TAG="$node_tag" --build-arg PM2_VERSION="$PM2_VERSION" \
+    log_info "Pushing ${REGISTRY}:${tag} ${aliases}"
+    docker buildx build --pull --push --platform "$PLATFORMS" -f "$dockerfile" "${build_args[@]}" \
       "${tags[@]}" . || return 1
   fi
 }
@@ -69,22 +66,19 @@ total=0
 ok=0
 failed=()
 
-for version in $(jq -r '.node[]' versions.json); do
-  for variant in $(jq -r '.variants[]' versions.json); do
-    tag="${version}-${variant}"
-    if [ ${#ONLY[@]} -gt 0 ] && [[ ! " ${ONLY[*]} " =~ " ${tag} " ]]; then
-      continue
-    fi
-    total=$((total + 1))
-    echo "----------------------------------------"
-    if build_test_push "$version" "$variant"; then
-      ok=$((ok + 1))
-    else
-      log_error "${tag} failed"
-      failed+=("$tag")
-    fi
-  done
-done
+while IFS=$'\t' read -r tag dockerfile args aliases; do
+  if [ ${#ONLY[@]} -gt 0 ] && [[ ! " ${ONLY[*]} " =~ " ${tag} " ]]; then
+    continue
+  fi
+  total=$((total + 1))
+  echo "----------------------------------------"
+  if build_test_push "$tag" "$dockerfile" "$args" "$aliases" < /dev/null; then
+    ok=$((ok + 1))
+  else
+    log_error "${tag} failed"
+    failed+=("$tag")
+  fi
+done < <(jq -r -f images.jq versions.json | jq -r '.[] | [.tag, .dockerfile, .args, (.aliases | join(" "))] | @tsv')
 
 echo "========================================="
 echo "Total images: $total"

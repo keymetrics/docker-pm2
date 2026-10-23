@@ -1,0 +1,27 @@
+# Docker Hardened Images (dhi.io): no shell, no package manager, non-root user
+# NODE_VERSION is a Node.js major available on dhi.io/node, e.g. 22, 24, 26
+ARG NODE_VERSION=24
+
+FROM dhi.io/node:${NODE_VERSION}-debian13-dev AS build
+ARG PM2_VERSION=latest
+RUN npm install -g --prefix /opt/pm2 pm2@${PM2_VERSION} \
+ && npm cache clean --force
+
+FROM dhi.io/node:${NODE_VERSION}-debian13
+ARG PM2_VERSION=latest
+
+LABEL org.opencontainers.image.title="pm2" \
+      org.opencontainers.image.description="Hardened Node.js production image with the PM2 runtime" \
+      org.opencontainers.image.source="https://github.com/keymetrics/docker-pm2" \
+      org.opencontainers.image.vendor="Keymetrics" \
+      org.opencontainers.image.licenses="MIT"
+
+COPY --from=build /opt/pm2 /opt/pm2
+# pm2 binaries start with #!/usr/bin/env node, which the runtime image does not ship
+COPY --from=build /usr/bin/env /usr/bin/env
+ENV PATH="/opt/pm2/bin:${PATH}"
+
+EXPOSE 80 443
+
+# Start pm2.json process file
+CMD ["pm2-runtime", "start", "pm2.json"]

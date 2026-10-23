@@ -12,7 +12,7 @@ Further than that, using PM2 as a layer between the container and the applicatio
 
 ## Tags available
 
-All images are built from the same [Dockerfile](Dockerfile) on top of the [official Node.js images](https://hub.docker.com/_/node), for `linux/amd64` and `linux/arm64`. `latest` points to the newest Node.js release, and `keymetrics/pm2:latest` is an alias of `latest-alpine`.
+Standard images are built from the [Dockerfile](Dockerfile) on top of the [official Node.js images](https://hub.docker.com/_/node). All images are published for `linux/amd64` and `linux/arm64`. `latest` points to the newest Node.js release, and `keymetrics/pm2:latest` is an alias of `latest-alpine`.
 
 **Image Name** | **Operating system** | **Base image**
 ---|---|---
@@ -41,6 +41,40 @@ keymetrics/pm2:`latest-slim`|Debian (minimal packages, follows the `node:<versio
 keymetrics/pm2:`26-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:26-slim`
 keymetrics/pm2:`24-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:24-slim`
 keymetrics/pm2:`22-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:22-slim`
+
+### Hardened
+
+**Image Name** | **Base image**
+---|---
+keymetrics/pm2:`26-hardened`|`dhi.io/node:26-debian13`
+keymetrics/pm2:`24-hardened`|`dhi.io/node:24-debian13`
+keymetrics/pm2:`22-hardened`|`dhi.io/node:22-debian13`
+
+Built from [Dockerfile.hardened](Dockerfile.hardened) on top of [Docker Hardened Images](https://docs.docker.com/dhi/): minimal Debian 13, near-zero CVEs, non-root `node` user (uid 1000), working directory `/app`. There is **no shell, no npm and no package manager** at runtime, so install your dependencies in a build stage:
+
+```dockerfile
+FROM dhi.io/node:24-debian13-dev AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+FROM keymetrics/pm2:24-hardened
+COPY --from=deps /app/node_modules node_modules/
+COPY src src/
+COPY pm2.json .
+CMD ["pm2-runtime", "start", "pm2.json"]
+```
+
+Without `ps` in the image, PM2 can only stop the main process of an app: child processes spawned by your app are not killed on stop or restart.
+
+### Bun
+
+**Image Name** | **Base image**
+---|---
+keymetrics/pm2:`bun`|`oven/bun:1` (Debian)
+keymetrics/pm2:`bun-alpine`|`oven/bun:1-alpine`
+
+Built from [Dockerfile.bun](Dockerfile.bun): PM2 and your applications run on [Bun](https://bun.sh) instead of Node.js (`node` is a shim to `bun` in these images). Install your dependencies with `bun install`.
 
 The list of built versions lives in [versions.json](versions.json).
 

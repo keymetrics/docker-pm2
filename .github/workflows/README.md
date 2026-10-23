@@ -10,13 +10,17 @@
 
 - `node`: Node.js major versions (`latest` follows the `node:<variant>` tags)
 - `variants`: base image variants (`alpine`, `bookworm`, `trixie`, `slim`)
+- `hardened`: Node.js majors built on Docker Hardened Images (`<major>-hardened`, `Dockerfile.hardened`)
+- `bun`: Bun images, tag → `oven/bun` tag (`Dockerfile.bun`)
 - `aliases`: extra tags pushed for an image (`latest-alpine` is also pushed as `latest`)
 
-Every image is built from the root `Dockerfile` with `NODE_TAG` and `PM2_VERSION` build args. The PM2 version is resolved from npm at the start of each run.
+`images.jq` expands it into the build list (`jq -f images.jq versions.json`), used as the CI matrix and by `build-and-push.sh`. The PM2 version is resolved from npm at the start of each run.
+
+Hardened images pull from `dhi.io` with the `DOCKER_USERNAME` / `DOCKER_PASSWORD` credentials; on fork pull requests (no secrets) they are skipped.
 
 ### Pipeline
 
-For each Node version × variant:
+For each image:
 
 1. Build an amd64 image and load it locally
 2. Run `test/test-image.sh` against it (node/pm2 versions, example-app served through `pm2-runtime`, graceful SIGTERM)

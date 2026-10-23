@@ -27,8 +27,10 @@ trap cleanup EXIT
 
 echo "Testing ${IMAGE}"
 
-NODE_VERSION=$(docker run --rm "$IMAGE" node -v) || fail "node -v failed"
-success "node ${NODE_VERSION}"
+# node is a shim to bun in bun images, and only accepts script flags there
+RUNTIME=$(docker run --rm "$IMAGE" node -p "process.versions.bun ? 'bun ' + process.versions.bun : 'node ' + process.version") \
+  || fail "runtime version check failed"
+success "${RUNTIME}"
 
 PM2_VERSION=$(docker run --rm "$IMAGE" pm2 -v | tail -1) || fail "pm2 -v failed"
 if [ -n "$EXPECTED_PM2" ] && [ "$PM2_VERSION" != "$EXPECTED_PM2" ]; then

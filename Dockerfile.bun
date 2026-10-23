@@ -1,0 +1,21 @@
+# BUN_TAG is a tag of the official oven/bun image, e.g. 1, 1-alpine
+ARG BUN_TAG=1
+FROM oven/bun:${BUN_TAG}
+
+ARG PM2_VERSION=latest
+
+LABEL org.opencontainers.image.title="pm2" \
+      org.opencontainers.image.description="Bun production image with the PM2 runtime" \
+      org.opencontainers.image.source="https://github.com/keymetrics/docker-pm2" \
+      org.opencontainers.image.vendor="Keymetrics" \
+      org.opencontainers.image.licenses="MIT"
+
+# Install pm2 (node is a shim to bun in oven/bun images)
+ENV PATH="/root/.bun/bin:${PATH}"
+RUN bun add -g pm2@${PM2_VERSION} \
+ && rm -rf /root/.bun/install/cache
+
+EXPOSE 80 443
+
+# Start pm2.json process file
+CMD ["pm2-runtime", "start", "pm2.json"]

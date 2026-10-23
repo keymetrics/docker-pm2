@@ -24,8 +24,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      node: ${{ steps.versions.outputs.node }}
-      variants: ${{ steps.versions.outputs.variants }}
+      images: ${{ steps.versions.outputs.images }}
       pm2: ${{ steps.versions.outputs.pm2 }}
     steps:
     - name: Checkout
@@ -35,19 +34,21 @@ jobs:
       id: versions
       run: |
         {
-          echo "node=$(jq -c .node versions.json)"
-          echo "variants=$(jq -c .variants versions.json)"
+          echo "images=$(jq -c -f images.jq versions.json)"
           echo "pm2=$(npm view pm2 version)"
         } >> "$GITHUB_OUTPUT"
 
   build:
+    name: build ${{ matrix.tag }}
     needs: setup
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        node-version: ${{ fromJSON(needs.setup.outputs.node) }}
-        variant: ${{ fromJSON(needs.setup.outputs.variants) }}
+        include: ${{ fromJSON(needs.setup.outputs.images) }}
+    env:
+      # dhi.io needs credentials even to pull, which fork pull requests do not get
+      BUILDABLE: ${{ matrix.dockerfile != 'Dockerfile.hardened' || secrets.DOCKER_USERNAME != '' }}
 
     steps:
     - name: Checkout
@@ -56,20 +57,12 @@ jobs:
     - name: Compute tags
       id: tags
       env:
-        NODE_VERSION: ${{ matrix.node-version }}
-        VARIANT: ${{ matrix.variant }}
+        TAG: ${{ matrix.tag }}
+        ALIASES: ${{ join(matrix.aliases, ' ') }}
       run: |
-        tag="${NODE_VERSION}-${VARIANT}"
-        if [ "$NODE_VERSION" = "latest" ]; then
-          echo "node_tag=${VARIANT}" >> "$GITHUB_OUTPUT"
-        else
-          echo "node_tag=${tag}" >> "$GITHUB_OUTPUT"
-        fi
-        echo "tag=${tag}" >> "$GITHUB_OUTPUT"
         {
           echo "list<<EOF"
-          echo "${IMAGE_NAME}:${tag}"
-          jq -r --arg t "$tag" '.aliases[$t] // [] | .[]' versions.json | sed "s|^|${IMAGE_NAME}:|"
+          for t in $TAG $ALIASES; do echo "${IMAGE_NAME}:${t}"; done
           echo "EOF"
         } >> "$GITHUB_OUTPUT"
 
@@ -79,22 +72,33 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: Log in to Docker Hardened Images
+      if: matrix.dockerfile == 'Dockerfile.hardened' && env.BUILDABLE == 'true'
+      uses: docker/login-action@v3
+      with:
+        registry: dhi.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
     - name: Build test image
+      if: env.BUILDABLE == 'true'
       uses: docker/build-push-action@v6
       with:
         context: .
+        file: ${{ matrix.dockerfile }}
         platforms: linux/amd64
         pull: true
         load: true
-        tags: pm2-test:${{ steps.tags.outputs.tag }}
+        tags: pm2-test:${{ matrix.tag }}
         build-args: |
-          NODE_TAG=${{ steps.tags.outputs.node_tag }}
+          ${{ matrix.args }}
           PM2_VERSION=${{ needs.setup.outputs.pm2 }}
-        cache-from: type=gha,scope=${{ steps.tags.outputs.tag }}
-        cache-to: type=gha,scope=${{ steps.tags.outputs.tag }},mode=max
+        cache-from: type=gha,scope=${{ matrix.tag }}
+        cache-to: type=gha,scope=${{ matrix.tag }},mode=max
 
     - name: Test image
-      run: bash test/test-image.sh pm2-test:${{ steps.tags.outputs.tag }} ${{ needs.setup.outputs.pm2 }}
+      if: env.BUILDABLE == 'true'
+      run: bash test/test-image.sh pm2-test:${{ matrix.tag }} ${{ needs.setup.outputs.pm2 }}
 
     - name: Log in to Docker Hub
       if: github.event_name != 'pull_request'
@@ -104,31 +108,33 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push
+      if: env.BUILDABLE == 'true'
       uses: docker/build-push-action@v6
       with:
         context: .
+        file: ${{ matrix.dockerfile }}
         platforms: linux/amd64,linux/arm64
         pull: true
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.tags.outputs.list }}
         build-args: |
-          NODE_TAG=${{ steps.tags.outputs.node_tag }}
+          ${{ matrix.args }}
           PM2_VERSION=${{ needs.setup.outputs.pm2 }}
         labels: |
           org.opencontainers.image.version=${{ needs.setup.outputs.pm2 }}
           org.opencontainers.image.revision=${{ github.sha }}
         provenance: mode=max
         sbom: true
-        cache-from: type=gha,scope=${{ steps.tags.outputs.tag }}
-        cache-to: type=gha,scope=${{ steps.tags.outputs.tag }},mode=max
+        cache-from: type=gha,scope=${{ matrix.tag }}
+        cache-to: type=gha,scope=${{ matrix.tag }},mode=max
 
     - name: Scan for vulnerabilities
-      if: github.event_name != 'pull_request'
+      if: github.event_name != 'pull_request' && env.BUILDABLE == 'true'
       continue-on-error: true
       uses: docker/scout-action@v1
       with:
         command: cves
-        image: local://pm2-test:${{ steps.tags.outputs.tag }}
+        image: local://pm2-test:${{ matrix.tag }}
         only-severities: critical,high
         only-fixed: true
         exit-code: false
