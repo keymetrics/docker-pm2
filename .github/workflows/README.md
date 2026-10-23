@@ -36,7 +36,7 @@ GitHub disables scheduled workflows after 60 days without repository activity. T
 
 ## Docker Hub Description
 
-`dockerhub-description.yml` syncs `README.md` to the Docker Hub overview of `keymetrics/pm2` whenever it changes on master (or manually with `gh workflow run dockerhub-description.yml -R keymetrics/docker-pm2`). The token needs the Read, Write, Delete scope to update the description.
+`dockerhub-description.yml` syncs `README.md` to the Docker Hub overview of `keymetrics/pm2` whenever it changes on master (or manually with `gh workflow run dockerhub-description.yml -R keymetrics/docker-pm2`). It uses a dedicated `DOCKERHUB_DESCRIPTION_TOKEN` secret, a Docker Hub personal access token with the Read, Write, Delete scope.
 
 ### Required Secrets
 
