@@ -133,6 +133,16 @@ jobs:
         only-fixed: true
         exit-code: false
 
+  ci:
+    # Single required status check for branch protection, independent of the matrix
+    name: ci
+    if: always()
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check build results
+      run: '[ "${{ needs.build.result }}" = "success" ]'
+
   keepalive:
     # GitHub disables scheduled workflows after 60 days without repository activity
     if: github.event_name == 'schedule'

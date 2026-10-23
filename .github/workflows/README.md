@@ -23,7 +23,7 @@ For each Node version × variant:
 3. Build and push the multi-arch image with SBOM and provenance attestations (skipped on pull requests)
 4. Report fixable critical/high CVEs with Docker Scout (informational, never blocks a release)
 
-A failing variant does not cancel the others (`fail-fast: false`).
+A failing variant does not cancel the others (`fail-fast: false`). The `ci` job aggregates all builds and is the only required status check on `master`, so changing the matrix does not require touching branch protection.
 
 ### Build Triggers
 
