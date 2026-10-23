@@ -34,6 +34,10 @@ A failing variant does not cancel the others (`fail-fast: false`). The `ci` job 
 
 GitHub disables scheduled workflows after 60 days without repository activity. The `keepalive` job re-enables the workflow on every scheduled run to prevent that.
 
+## Docker Hub Description
+
+`dockerhub-description.yml` syncs `README.md` to the Docker Hub overview of `keymetrics/pm2` whenever it changes on master (or manually with `gh workflow run dockerhub-description.yml -R keymetrics/docker-pm2`). The token needs the Read, Write, Delete scope to update the description.
+
 ### Required Secrets
 
 - `DOCKER_USERNAME`: Docker Hub username
