@@ -12,52 +12,43 @@ Further than that, using PM2 as a layer between the container and the applicatio
 
 ## Tags available
 
-**Image Name** | **Operating system** | **Dockerfile**
----|---|---
-keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[latest-alpine](tags/latest/alpine/Dockerfile)
-keymetrics/pm2:`24-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[24-alpine](tags/24/alpine/Dockerfile)
-keymetrics/pm2:`22-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[22-alpine](tags/22/alpine/Dockerfile)
-keymetrics/pm2:`20-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[20-alpine](tags/20/alpine/Dockerfile)
-keymetrics/pm2:`18-alpine`|[Alpine](https://www.alpinelinux.org/about/)|[18-alpine](tags/18/alpine/Dockerfile)
+All images are built from the same [Dockerfile](Dockerfile) on top of the [official Node.js images](https://hub.docker.com/_/node), for `linux/amd64` and `linux/arm64`. `latest` points to the newest Node.js release, and `keymetrics/pm2:latest` is an alias of `latest-alpine`.
 
-**Image Name** | **Operating system** | **Dockerfile**
+**Image Name** | **Operating system** | **Base image**
 ---|---|---
-keymetrics/pm2:`latest-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[latest-bookworm](tags/latest/bookworm/Dockerfile)
-keymetrics/pm2:`24-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[24-bookworm](tags/24/bookworm/Dockerfile)
-keymetrics/pm2:`22-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[22-bookworm](tags/22/bookworm/Dockerfile)
-keymetrics/pm2:`20-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[20-bookworm](tags/20/bookworm/Dockerfile)
-keymetrics/pm2:`18-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|[18-bookworm](tags/18/bookworm/Dockerfile)
+keymetrics/pm2:`latest-alpine`|[Alpine](https://www.alpinelinux.org/about/)|`node:alpine`
+keymetrics/pm2:`26-alpine`|[Alpine](https://www.alpinelinux.org/about/)|`node:26-alpine`
+keymetrics/pm2:`24-alpine`|[Alpine](https://www.alpinelinux.org/about/)|`node:24-alpine`
+keymetrics/pm2:`22-alpine`|[Alpine](https://www.alpinelinux.org/about/)|`node:22-alpine`
 
-**Image Name** | **Operating system** | **Dockerfile**
+**Image Name** | **Operating system** | **Base image**
 ---|---|---
-keymetrics/pm2:`latest-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[latest-bullseye](tags/latest/bullseye/Dockerfile)
-keymetrics/pm2:`24-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[24-bullseye](tags/24/bullseye/Dockerfile)
-keymetrics/pm2:`22-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[22-bullseye](tags/22/bullseye/Dockerfile)
-keymetrics/pm2:`20-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[20-bullseye](tags/20/bullseye/Dockerfile)
-keymetrics/pm2:`18-bullseye`|[Debian Bullseye](https://wiki.debian.org/DebianBullseye)|[18-bullseye](tags/18/bullseye/Dockerfile)
+keymetrics/pm2:`latest-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|`node:bookworm`
+keymetrics/pm2:`26-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|`node:26-bookworm`
+keymetrics/pm2:`24-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|`node:24-bookworm`
+keymetrics/pm2:`22-bookworm`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm)|`node:22-bookworm`
 
-**Image Name** | **Operating system** | **Dockerfile**
+**Image Name** | **Operating system** | **Base image**
 ---|---|---
-keymetrics/pm2:`latest-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[latest-buster](tags/latest/buster/Dockerfile)
-keymetrics/pm2:`20-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[20-buster](tags/20/buster/Dockerfile)
-keymetrics/pm2:`18-buster`|[Debian Buster](https://wiki.debian.org/DebianBuster)|[18-buster](tags/18/buster/Dockerfile)
+keymetrics/pm2:`latest-trixie`|[Debian Trixie](https://wiki.debian.org/DebianTrixie)|`node:trixie`
+keymetrics/pm2:`26-trixie`|[Debian Trixie](https://wiki.debian.org/DebianTrixie)|`node:26-trixie`
+keymetrics/pm2:`24-trixie`|[Debian Trixie](https://wiki.debian.org/DebianTrixie)|`node:24-trixie`
+keymetrics/pm2:`22-trixie`|[Debian Trixie](https://wiki.debian.org/DebianTrixie)|`node:22-trixie`
 
-**Image Name** | **Operating system** | **Dockerfile**
+**Image Name** | **Operating system** | **Base image**
 ---|---|---
-keymetrics/pm2:`latest-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[latest-slim](tags/latest/slim/Dockerfile)
-keymetrics/pm2:`24-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[24-slim](tags/24/slim/Dockerfile)
-keymetrics/pm2:`22-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[22-slim](tags/22/slim/Dockerfile)
-keymetrics/pm2:`20-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[20-slim](tags/20/slim/Dockerfile)
-keymetrics/pm2:`18-slim`|[Debian Bookworm](https://wiki.debian.org/DebianBookworm) (minimal packages)|[18-slim](tags/18/slim/Dockerfile)
+keymetrics/pm2:`latest-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:slim`
+keymetrics/pm2:`26-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:26-slim`
+keymetrics/pm2:`24-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:24-slim`
+keymetrics/pm2:`22-slim`|Debian (minimal packages, follows the `node:<version>-slim` default)|`node:22-slim`
 
+The list of built versions lives in [versions.json](versions.json).
 
 You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
-> The build process of these images is automatically triggered each time [NodeJS's Docker images](https://hub.docker.com/r/library/node/tags/) are built.
-The build process of these images is automatically triggered each time [Docker PM2's GitHub repo](https://github.com/keymetrics/docker-pm2) master branch is pushed.
-The build process of these images is automatically triggered each time [PM2's GitHub repo](https://github.com/Unitech/pm2) master branch is pushed.
+> Images are rebuilt every week to pick up Node.js and PM2 releases, and on every push to the master branch of [docker-pm2](https://github.com/keymetrics/docker-pm2).
 
-> If you absolutely need to use an older NodeJS version, check the [docker-pm2](https://hub.docker.com/r/keymetrics/pm2/tags) Docker hub page for available images. _(Not recommended)_
+> Tags for end-of-life Node.js versions (18, 20 and older) and Debian releases (buster, bullseye and older) are no longer rebuilt. They remain on [Docker Hub](https://hub.docker.com/r/keymetrics/pm2/tags) but do not receive security updates. _(Not recommended)_
 
 ## Usage
 
@@ -106,11 +97,8 @@ COPY package.json .
 COPY pm2.json .
 
 # Install app dependencies
-ENV NPM_CONFIG_LOGLEVEL warn
-RUN npm install --production
-
-# Show current folder structure in logs
-RUN ls -al -R
+ENV NPM_CONFIG_LOGLEVEL=warn
+RUN npm install --omit=dev
 
 CMD [ "pm2-runtime", "start", "pm2.json" ]
 ```
@@ -157,7 +145,7 @@ $ docker build -t your-app-name .
 $ docker run -e KEYMETRICS_PUBLIC=XXXX -e KEYMETRICS_SECRET=YYYY your-app-name
 ```
 
-Make sure that the ports 80 (TCP outbound), 443 (HTTPS outbound) and 43554 (TCP outbound) are allowed on your firewall.
+Make sure that the port 443 (HTTPS outbound) is allowed on your firewall.
 
 See the [troubleshooting](http://docs.keymetrics.io/docs/pages/faq-troubleshooting/#troubleshooting-for-keymetrics-pm2) in case you encounter any problem.
 
@@ -211,3 +199,13 @@ See also the list of [contributors](https://github.com/keymetrics/docker-pm2/con
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 License information for the software contained in this image can be found [here](https://github.com/Unitech/pm2/blob/master/GNU-AGPL-3.0.txt) (pm2) and [here](https://github.com/nodejs/node/blob/master/LICENSE) (node).
+
+## Development
+
+```bash
+# Build and test images locally without pushing
+./build-and-push.sh --no-push 24-alpine
+
+# Test any image against example-app
+bash test/test-image.sh keymetrics/pm2:24-alpine
+```

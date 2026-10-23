@@ -5,88 +5,142 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
   schedule:
-    # Weekly builds to catch upstream updates
+    # Weekly builds to catch Node.js and PM2 updates
     - cron: '0 2 * * 1'
 
 env:
-  REGISTRY: docker.io
   IMAGE_NAME: keymetrics/pm2
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      node: ${{ steps.versions.outputs.node }}
+      variants: ${{ steps.versions.outputs.variants }}
+      pm2: ${{ steps.versions.outputs.pm2 }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Read versions
+      id: versions
+      run: |
+        {
+          echo "node=$(jq -c .node versions.json)"
+          echo "variants=$(jq -c .variants versions.json)"
+          echo "pm2=$(npm view pm2 version)"
+        } >> "$GITHUB_OUTPUT"
+
   build:
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node-version: ['18', '20', '22', '24', 'latest']
-        variant: ['alpine', 'bookworm', 'bullseye', 'buster', 'slim']
-        exclude:
-          # Remove buster for Node 22+ as it's deprecated
-          - node-version: '22'
-            variant: 'buster'
-          - node-version: '24'
-            variant: 'buster'
-          # Remove bullseye for Node 24 as bookworm is preferred
-          - node-version: '24'
-            variant: 'bullseye'
+        node-version: ${{ fromJSON(needs.setup.outputs.node) }}
+        variant: ${{ fromJSON(needs.setup.outputs.variants) }}
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Compute tags
+      id: tags
+      env:
+        NODE_VERSION: ${{ matrix.node-version }}
+        VARIANT: ${{ matrix.variant }}
+      run: |
+        tag="${NODE_VERSION}-${VARIANT}"
+        if [ "$NODE_VERSION" = "latest" ]; then
+          echo "node_tag=${VARIANT}" >> "$GITHUB_OUTPUT"
+        else
+          echo "node_tag=${tag}" >> "$GITHUB_OUTPUT"
+        fi
+        echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+        {
+          echo "list<<EOF"
+          echo "${IMAGE_NAME}:${tag}"
+          jq -r --arg t "$tag" '.aliases[$t] // [] | .[]' versions.json | sed "s|^|${IMAGE_NAME}:|"
+          echo "EOF"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
+
+    - name: Build test image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        platforms: linux/amd64
+        pull: true
+        load: true
+        tags: pm2-test:${{ steps.tags.outputs.tag }}
+        build-args: |
+          NODE_TAG=${{ steps.tags.outputs.node_tag }}
+          PM2_VERSION=${{ needs.setup.outputs.pm2 }}
+        cache-from: type=gha,scope=${{ steps.tags.outputs.tag }}
+        cache-to: type=gha,scope=${{ steps.tags.outputs.tag }},mode=max
+
+    - name: Test image
+      run: bash test/test-image.sh pm2-test:${{ steps.tags.outputs.tag }} ${{ needs.setup.outputs.pm2 }}
 
     - name: Log in to Docker Hub
       if: github.event_name != 'pull_request'
       uses: docker/login-action@v3
       with:
-        registry: ${{ env.REGISTRY }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=raw,value=${{ matrix.node-version }}-${{ matrix.variant }}
-
     - name: Build and push
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       with:
-        context: ./tags/${{ matrix.node-version }}/${{ matrix.variant }}
+        context: .
         platforms: linux/amd64,linux/arm64
+        pull: true
         push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        tags: ${{ steps.tags.outputs.list }}
+        build-args: |
+          NODE_TAG=${{ steps.tags.outputs.node_tag }}
+          PM2_VERSION=${{ needs.setup.outputs.pm2 }}
+        labels: |
+          org.opencontainers.image.version=${{ needs.setup.outputs.pm2 }}
+          org.opencontainers.image.revision=${{ github.sha }}
+        provenance: mode=max
+        sbom: true
+        cache-from: type=gha,scope=${{ steps.tags.outputs.tag }}
+        cache-to: type=gha,scope=${{ steps.tags.outputs.tag }},mode=max
 
-  test:
-    needs: build
+    - name: Scan for vulnerabilities
+      if: github.event_name != 'pull_request'
+      continue-on-error: true
+      uses: docker/scout-action@v1
+      with:
+        command: cves
+        image: local://pm2-test:${{ steps.tags.outputs.tag }}
+        only-severities: critical,high
+        only-fixed: true
+        exit-code: false
+
+  keepalive:
+    # GitHub disables scheduled workflows after 60 days without repository activity
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    strategy:
-      matrix:
-        tag: ['latest-alpine', 'latest-slim', '20-alpine', '22-alpine', '24-alpine']
-
+    permissions:
+      actions: write
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Test Docker image
-      run: |
-        cd example-app
-        # Update Dockerfile to use the built image
-        sed -i "s|keymetrics/pm2:latest-alpine|keymetrics/pm2:${{ matrix.tag }}|g" Dockerfile
-        
-        # Build test image
-        docker build -t test-pm2:${{ matrix.tag }} .
-        
-        # Run basic tests
-        docker run --rm test-pm2:${{ matrix.tag }} pm2 --version
-        
-        # Test multi-arch support
-        docker manifest inspect keymetrics/pm2:${{ matrix.tag }}
+    - name: Keep scheduled workflow enabled
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/docker-publish.yml/enable"

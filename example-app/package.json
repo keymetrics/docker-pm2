@@ -2,18 +2,11 @@
   "name": "example-app",
   "version": "1.0.0",
   "description": "Docker PM2 example app",
-  "main": "index.js",
-  "private": "true",
+  "private": true,
   "type": "module",
   "scripts": {
-    "test": "xo && bash ./test/test.sh"
+    "test": "bash ../test/test-image.sh keymetrics/pm2:latest-alpine"
   },
   "author": "Keymetrics <contact@keymetrics.io>",
-  "license": "MIT",
-  "devDependencies": {
-    "xo": "^0.56.0"
-  },
-  "xo": {
-    "space": true
-  }
+  "license": "MIT"
 }

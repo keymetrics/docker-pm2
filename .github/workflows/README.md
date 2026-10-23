@@ -2,36 +2,39 @@
 
 ## Docker Multi-Architecture Build
 
-This repository now uses GitHub Actions to build Docker images with multi-architecture support (AMD64 and ARM64).
+`docker-publish.yml` builds every `keymetrics/pm2` image for `linux/amd64` and `linux/arm64`.
 
-### Migration from Travis CI
+### Versions
 
-- **Before**: Travis CI built single-architecture images only
-- **After**: GitHub Actions builds both AMD64 and ARM64 architectures
+`versions.json` at the repository root is the single source of truth:
 
-### Required Secrets
+- `node`: Node.js major versions (`latest` follows the `node:<variant>` tags)
+- `variants`: base image variants (`alpine`, `bookworm`, `trixie`, `slim`)
+- `aliases`: extra tags pushed for an image (`latest-alpine` is also pushed as `latest`)
 
-Configure these secrets in the repository settings:
+Every image is built from the root `Dockerfile` with `NODE_TAG` and `PM2_VERSION` build args. The PM2 version is resolved from npm at the start of each run.
 
-- `DOCKER_USERNAME`: Docker Hub username
-- `DOCKER_PASSWORD`: Docker Hub access token
+### Pipeline
+
+For each Node version × variant:
+
+1. Build an amd64 image and load it locally
+2. Run `test/test-image.sh` against it (node/pm2 versions, example-app served through `pm2-runtime`, graceful SIGTERM)
+3. Build and push the multi-arch image with SBOM and provenance attestations (skipped on pull requests)
+4. Report fixable critical/high CVEs with Docker Scout (informational, never blocks a release)
+
+A failing variant does not cancel the others (`fail-fast: false`).
 
 ### Build Triggers
 
-- **Push to master**: Builds and publishes all image variants
-- **Pull requests**: Builds images for testing (no push)
-- **Weekly schedule**: Rebuilds to catch upstream Node.js updates
+- **Push to master**: builds and publishes all images
+- **Pull requests**: builds and tests, no push
+- **Weekly schedule** (Monday 02:00 UTC): rebuilds to pick up Node.js and PM2 updates
+- **Manual**: `gh workflow run docker-publish.yml -R keymetrics/docker-pm2`
 
-### Supported Architectures
+GitHub disables scheduled workflows after 60 days without repository activity. The `keepalive` job re-enables the workflow on every scheduled run to prevent that.
 
-All images now support:
-- `linux/amd64` (Intel/AMD 64-bit)
-- `linux/arm64` (ARM 64-bit, including Apple Silicon)
+### Required Secrets
 
-### Matrix Strategy
-
-The workflow builds all combinations of:
-- Node versions: 18, 20, 22, 24, latest
-- Variants: alpine, bookworm, bullseye, buster, slim
-
-Some combinations are excluded for compatibility reasons (e.g., buster with Node 22+).
+- `DOCKER_USERNAME`: Docker Hub username
+- `DOCKER_PASSWORD`: Docker Hub access token (Read & Write)
