@@ -80,7 +80,7 @@ The list of built versions lives in [versions.json](versions.json).
 
 You can find more information about the image variants [here](https://github.com/nodejs/docker-node#image-variants).
 
-> Images are rebuilt every week to pick up Node.js and PM2 releases, and on every push to the master branch of [docker-pm2](https://github.com/keymetrics/docker-pm2).
+> Images are rebuilt every week to pick up Node.js updates, on every PM2 release, and on every push to the master branch of [docker-pm2](https://github.com/keymetrics/docker-pm2).
 
 > Tags for end-of-life Node.js versions (18, 20 and older) and Debian releases (buster, bullseye and older) are no longer rebuilt. They remain on [Docker Hub](https://hub.docker.com/r/keymetrics/pm2/tags) but do not receive security updates. _(Not recommended)_
 
